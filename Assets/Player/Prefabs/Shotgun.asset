@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6af777595a86084c92ae65734f2e179, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  <bullet>k__BackingField: {fileID: 9003478398312656354, guid: b8127eea5261cc541af37bbc9e2b9cb0, type: 3}
+  <shootForce>k__BackingField: 20
+  <upwardForce>k__BackingField: 0
+  <timeBetweenShooting>k__BackingField: 1
+  <spread>k__BackingField: 6
+  <timeBetweenShots>k__BackingField: 0
+  <fullAuto>k__BackingField: 0
+  <adaptiveAim>k__BackingField: 0
+  <magazineSize>k__BackingField: 1000
+  <bulletsPerTap>k__BackingField: 10
