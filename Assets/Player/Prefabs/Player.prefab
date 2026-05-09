@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 5464391772220309583}
   - component: {fileID: 1058921156001553997}
   - component: {fileID: 5246056573898773160}
+  - component: {fileID: 2682482479275497792}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -680,3 +681,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5752412508a2e834694fc200a0d43d9e, type: 2}
   - {fileID: 11400000, guid: 7a7022a41e0efa34e8920c1ac6a64f57, type: 2}
   weaponText: {fileID: 0}
+--- !u!114 &2682482479275497792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8279768708685429064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297a4eec5d9da84439af00c5dd77d424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailMovement
+  speed: 10
+  heightOffset: {x: 0, y: 0.4, z: 0}
