@@ -85,7 +85,7 @@ public class PlayerControler : MonoBehaviour
     {
         lastMovementState = playerState.CurrentPlayerMovementState;
 
-        if (playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning)
+        if (playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning && playerState.CurrentPlayerMovementState != PlayerMovementState.Grinding)
         {
             // Control Ground State
             bool isMovementInput = playerLocomotionInput.MovementInput != Vector2.zero;
@@ -131,8 +131,7 @@ public class PlayerControler : MonoBehaviour
         // Handle jumping
         if (playerLocomotionInput.JumpPressed && isGrounded)
         {
-            verticalVelocity += Mathf.Sqrt(jumpSpeed * 3 * gravity);
-            jumpedLastFrame = true;
+            Jump(1);
         }
 
         // If the player has just went mid air this frame then we gotta cancel the anti-bump's effect
@@ -311,5 +310,10 @@ public class PlayerControler : MonoBehaviour
         bool validAngle = angle <= characterController.slopeLimit;
 
         return characterController.isGrounded && validAngle;
+    }
+    public void Jump(float force)
+    {
+        verticalVelocity += Mathf.Sqrt(jumpSpeed * 3 * gravity * force);
+        jumpedLastFrame = true;
     }
 }

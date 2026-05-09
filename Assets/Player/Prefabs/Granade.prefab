@@ -164,5 +164,5 @@ MonoBehaviour:
   explosionDamage: 100
   explosionRange: 2
   maxCollisions: 2
-  maxLifeTime: 3
+  maxLifeTime: 2
   explodeOnTouch: 1

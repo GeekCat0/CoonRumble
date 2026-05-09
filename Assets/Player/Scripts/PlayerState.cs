@@ -7,7 +7,8 @@ public enum PlayerMovementState // Movement related player states
     Jumping = 4,
     Falling = 5,
     WallRunning = 6,
-    Sliding = 7
+    Sliding = 7,
+    Grinding = 8
 }
 public enum PlayerActionState // Actions player can perform
 {
@@ -35,6 +36,9 @@ public class PlayerState : MonoBehaviour
     }
     public bool IsStateGroundedState(PlayerMovementState playerMovementState) // If the player is Idling or Running then we know they're on the ground duh 
     {
-        return playerMovementState == PlayerMovementState.Idling || playerMovementState == PlayerMovementState.Running || playerMovementState == PlayerMovementState.Sliding;
+        return playerMovementState == PlayerMovementState.Idling ||
+            playerMovementState == PlayerMovementState.Running ||
+            playerMovementState == PlayerMovementState.Sliding ||
+            playerMovementState == PlayerMovementState.Grinding;
     }
 }

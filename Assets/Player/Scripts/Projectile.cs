@@ -52,7 +52,6 @@ public class Projectile : MonoBehaviour
         Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRange, enemyLayer);
         for (int i = 0; i < enemies.Length; i++)
         {
-            Debug.Log(enemies.Length + "  " + enemies[i].name);
             enemies[i].GetComponent<Health>().TakeDamage(explosionDamage);
         }
 
