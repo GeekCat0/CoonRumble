@@ -72,6 +72,7 @@ public class RailMovement : MonoBehaviour
         }
         Invoke(nameof(cooldown), 0.5f);
         playerState.SetPlayerMovementState(PlayerMovementState.Idling);
+        playerControler.Jump(1);
     }
 
     private void cooldown()
