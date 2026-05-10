@@ -33,6 +33,11 @@ public class PlayerControler : MonoBehaviour
     [Header("WallRun Settings")] // Variables for Wall running
     [SerializeField] private float wallCheckDistance = 1.0f;
     [SerializeField] private float wallRunGravity = 1.0f;
+    [SerializeField] private float forwardJumpForce = 3.0f;
+    [SerializeField] private float sideJumpForce = 3.0f;
+    [SerializeField] private float upJumpForce = 3.0f;
+    [SerializeField] private float wallStartBoost = 1f;
+    [SerializeField] private float maxWallRunSpeed = 4f;
 
     [Header("Camera Settings")] // Variables for camera control
     public float lookSenseH = 0.1f;
@@ -129,9 +134,14 @@ public class PlayerControler : MonoBehaviour
         bool isGrounded = playerState.InGroundedState();
 
         // Add gravity, while wall running we add less
-        verticalVelocity -= playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning ? gravity * Time.deltaTime : (gravity / wallRunGravity) * Time.deltaTime;     
+        if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
+            verticalVelocity -= verticalVelocity < 1 ? gravity * wallRunGravity * Time.deltaTime : gravity * wallRunGravity * 0.5f * Time.deltaTime;
+        else
+            verticalVelocity -= gravity * Time.deltaTime;
 
-        // Here we add the max speed a player is able to move to the vertical velocity so that they stick to the ground while walking off steep slopes
+        //verticalVelocity -= playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning ? gravity * Time.deltaTime : (gravity / wallRunGravity) * Time.deltaTime;     
+
+            // Here we add the max speed a player is able to move to the vertical velocity so that they stick to the ground while walking off steep slopes
         if (isGrounded && verticalVelocity < 0)
             verticalVelocity = -antiBump;
 
@@ -182,15 +192,19 @@ public class PlayerControler : MonoBehaviour
         // Add drag to player
         Vector3 currentDrag = newVelocity.normalized * drag * Time.deltaTime;
         transform.localScale = new Vector3(1,1,1);
-        if (!isGrounded)
+        if (!isGrounded && playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning)
         {
             currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
+            maxMovementSpeed = maxDashSpeed;
             sliding = false;
         }
         else if (playerLocomotionInput.SlideHeld)
         {
             if (newVelocity.magnitude < maxRunSpeed * minSpeedForSlide)
-                newVelocity = characterController.velocity + movementDelta * crouchSpeed;
+            {
+                maxMovementSpeed = maxRunSpeed * crouchSpeed;
+                newVelocity = characterController.velocity + movementDelta;
+            }
             else
             {
                 maxMovementSpeed = maxDashSpeed;
@@ -201,6 +215,12 @@ public class PlayerControler : MonoBehaviour
                 currentDrag = newVelocity.normalized * slideDrag * Time.deltaTime;
             }
             transform.localScale = new Vector3(0.8f, crouchingHeight, 0.8f);
+        }
+        else if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
+        {
+            currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
+            maxMovementSpeed = maxWallRunSpeed;
+            sliding = false;
         }
         else
         {
@@ -214,7 +234,6 @@ public class PlayerControler : MonoBehaviour
         newVelocity.y += verticalVelocity;
         newVelocity = !isGrounded ? HandleSteepWalls(newVelocity, characterController.slopeLimit) : newVelocity;
         newVelocity = playerLocomotionInput.SlideHeld ? (HandleSteepWalls(newVelocity, 15)) : newVelocity;
-
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
     }
@@ -250,6 +269,8 @@ public class PlayerControler : MonoBehaviour
             {
                 playerState.SetPlayerMovementState(PlayerMovementState.WallRunning);
                 startedWallRun = true;
+                if (verticalVelocity < wallStartBoost)
+                    verticalVelocity = wallStartBoost;
             }
         }
         else if (startedWallRun)
@@ -274,11 +295,12 @@ public class PlayerControler : MonoBehaviour
             // Handles wall jumps
             if (playerLocomotionInput.JumpPressed)
             {
-                verticalVelocity = Mathf.Sqrt(jumpSpeed * 3 * gravity);
+                verticalVelocity = Mathf.Sqrt(upJumpForce * 3 * gravity);
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
                 startedWallRun = false;
 
-                movementDelta += wallNormal * Mathf.Sqrt(jumpSpeed * 3 * gravity);
+                movementDelta += wallNormal * Mathf.Sqrt(sideJumpForce * 3 * gravity);
+                movementDelta += wallForwardDirection * Mathf.Sqrt(forwardJumpForce * 3 * gravity);
                 return movementDelta;
             }
 
