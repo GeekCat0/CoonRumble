@@ -524,6 +524,10 @@ MonoBehaviour:
   lookSenseH: 0.1
   lookSenseV: 0.1
   lookLimitV: 89
+  slideBoost: 1.5
+  minSpeedForSlide: 0.7
+  crouchSpeed: 0.7
+  crouchingHeight: 0.5
 --- !u!114 &9218551938654307651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +561,7 @@ CharacterController:
   m_Height: 0.5
   m_Radius: 0.2
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.25
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.00001
   m_Center: {x: 0, y: 0, z: 0}
@@ -693,5 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297a4eec5d9da84439af00c5dd77d424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailMovement
-  speed: 10
+  speed: 13
   heightOffset: {x: 0, y: 0.4, z: 0}
+  endLaunchForce: 1
+  jumpLaunchForce: 1.5

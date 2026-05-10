@@ -6425,6 +6425,14 @@ PrefabInstance:
       propertyPath: weaponText
       value: 
       objectReference: {fileID: 1491809984}
+    - target: {fileID: 5290142592610692285, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: m_Radius
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290142592610692285, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.4
@@ -6464,6 +6472,10 @@ PrefabInstance:
     - target: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: slideBoost
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_Name
@@ -7341,6 +7353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RailMovement
   speed: 1
   heightOffset: {x: 0, y: 1, z: 0}
+  endLaunchForce: 1
+  jumpLaunchForce: 1.5
 --- !u!65 &1929402758
 BoxCollider:
   m_ObjectHideFlags: 0

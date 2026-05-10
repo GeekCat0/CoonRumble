@@ -73,6 +73,7 @@ public class ProjectileWeapons : MonoBehaviour
         currentBullet.transform.forward = directionWithSpread.normalized;
 
         // Add forces to bullet
+        currentBullet.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * weaponData.shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(playerCamera.transform.up * weaponData.upwardForce, ForceMode.Impulse);
 

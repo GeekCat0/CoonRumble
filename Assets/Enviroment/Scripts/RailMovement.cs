@@ -7,6 +7,8 @@ public class RailMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
     [SerializeField] private Vector3 heightOffset = new Vector3(0, 1, 0);
+    [SerializeField] private float endLaunchForce = 1f;
+    [SerializeField] private float jumpLaunchForce = 1.5f;
 
     private bool isGrinding = false;
     private int direction = 1; // 1 for forward, -1 for backward
@@ -63,7 +65,7 @@ public class RailMovement : MonoBehaviour
             {
                 Invoke(nameof(cooldown), 0.5f);
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
-                playerControler.Jump(2);
+                playerControler.Jump(jumpLaunchForce);
                 yield break;
             }
             animatedObj.NormalizedTime += (Time.deltaTime * calculatedSpeed * direction);
@@ -72,7 +74,7 @@ public class RailMovement : MonoBehaviour
         }
         Invoke(nameof(cooldown), 0.5f);
         playerState.SetPlayerMovementState(PlayerMovementState.Idling);
-        playerControler.Jump(1);
+        playerControler.Jump(endLaunchForce);
     }
 
     private void cooldown()

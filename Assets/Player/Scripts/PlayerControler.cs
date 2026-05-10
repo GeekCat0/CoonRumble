@@ -39,6 +39,13 @@ public class PlayerControler : MonoBehaviour
     public float lookSenseV = 0.1f;
     [SerializeField] private float lookLimitV = 89f;
 
+    [Header("Crouch Settings")] // Variables for sliding
+    [SerializeField] private float slideBoost = 1;
+    [SerializeField] private float minSpeedForSlide = 0.5f;
+    [SerializeField] private float crouchSpeed = 0.7f;
+    [SerializeField] private float crouchingHeight = 0.2f;
+    private bool sliding = false;
+
     // All private variables that we don't use or set outside of this class
     private PlayerLocomotionInput playerLocomotionInput;
     private PlayerState playerState;
@@ -161,6 +168,7 @@ public class PlayerControler : MonoBehaviour
         Vector3 movementDelta = movementDirection * lateralAcceleration * Time.deltaTime;
         movementDelta = HandleWallRunning(movementDelta);
 
+
         Vector3 newVelocity = playerLocomotionInput.SlideHeld ? characterController.velocity : characterController.velocity + movementDelta;
 
         // Handles dashing together with the method 
@@ -172,11 +180,33 @@ public class PlayerControler : MonoBehaviour
 
 
         // Add drag to player
-        Vector3 currentDrag = newVelocity.normalized * slideDrag * Time.deltaTime;
+        Vector3 currentDrag = newVelocity.normalized * drag * Time.deltaTime;
+        transform.localScale = new Vector3(1,1,1);
         if (!isGrounded)
+        {
             currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
-        else if (!playerLocomotionInput.SlideHeld) 
-            currentDrag = newVelocity.normalized * drag * Time.deltaTime;
+            sliding = false;
+        }
+        else if (playerLocomotionInput.SlideHeld)
+        {
+            if (newVelocity.magnitude < maxRunSpeed * minSpeedForSlide)
+                newVelocity = characterController.velocity + movementDelta * crouchSpeed;
+            else
+            {
+                maxMovementSpeed = maxDashSpeed;
+                if (!sliding)
+                    newVelocity = newVelocity * slideBoost;
+                sliding = true;
+                playerState.SetPlayerMovementState(PlayerMovementState.Sliding);
+                currentDrag = newVelocity.normalized * slideDrag * Time.deltaTime;
+            }
+            transform.localScale = new Vector3(0.8f, crouchingHeight, 0.8f);
+        }
+        else
+        {
+            sliding = false;
+            maxMovementSpeed = maxRunSpeed;
+        }
 
 
         newVelocity = (newVelocity.magnitude > drag * Time.deltaTime) ? newVelocity - currentDrag : Vector3.zero;
