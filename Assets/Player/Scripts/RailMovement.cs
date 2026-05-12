@@ -66,6 +66,7 @@ public class RailMovement : MonoBehaviour
                 Invoke(nameof(cooldown), 0.5f);
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
                 playerControler.Jump(jumpLaunchForce);
+                playerControler.AddForwardForce(jumpLaunchForce);
                 yield break;
             }
             animatedObj.NormalizedTime += (Time.deltaTime * calculatedSpeed * direction);
@@ -75,6 +76,7 @@ public class RailMovement : MonoBehaviour
         Invoke(nameof(cooldown), 0.5f);
         playerState.SetPlayerMovementState(PlayerMovementState.Idling);
         playerControler.Jump(endLaunchForce);
+        playerControler.AddForwardForce(jumpLaunchForce);
     }
 
     private void cooldown()

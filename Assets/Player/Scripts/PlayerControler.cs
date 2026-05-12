@@ -70,6 +70,7 @@ public class PlayerControler : MonoBehaviour
     private RaycastHit rightWallHit;
     private RaycastHit lastRunnedWall;
     private bool wallLeft = false;
+    private float additionalForwardForce = 0;
     public bool wallRight { get; private set; } = false ; 
     private bool startedWallRun = false;
 
@@ -179,6 +180,8 @@ public class PlayerControler : MonoBehaviour
         movementDelta = HandleWallRunning(movementDelta);
 
         Vector3 newVelocity = playerLocomotionInput.SlideHeld ? characterController.velocity : characterController.velocity + movementDelta;
+        newVelocity += movementDirection * additionalForwardForce;
+        additionalForwardForce = 0;
 
         // Handles dashing together with the method 
         if (playerLocomotionInput.DashPressed && dashOffCooldown)
@@ -367,5 +370,9 @@ public class PlayerControler : MonoBehaviour
     {
         verticalVelocity += Mathf.Sqrt(jumpSpeed * 3 * gravity * force);
         jumpedLastFrame = true;
+    }
+    public void AddForwardForce(float force)
+    {
+        additionalForwardForce = force;
     }
 }

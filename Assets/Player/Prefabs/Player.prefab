@@ -524,7 +524,7 @@ MonoBehaviour:
   wallRunFallingGravity: 0.2
   forwardJumpForce: 0.1
   sideJumpForce: 0.2
-  upJumpForce: 0.7
+  upJumpForce: 0.5
   wallStartBoost: 5
   maxWallRunSpeed: 9
   lookSenseH: 0.1
