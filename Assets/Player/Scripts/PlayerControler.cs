@@ -50,6 +50,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float minSpeedForSlide = 0.5f;
     [SerializeField] private float crouchSpeed = 0.7f;
     [SerializeField] private float crouchingHeight = 0.2f;
+    [SerializeField] private float maxSlideSpeed = 1.0f;
     private bool sliding = false;
 
     // All private variables that we don't use or set outside of this class
@@ -207,7 +208,7 @@ public class PlayerControler : MonoBehaviour
                 }
                 else
                 {
-                    maxMovementSpeed = maxDashSpeed;
+                    maxMovementSpeed = maxSlideSpeed;
                     if (!sliding)
                         newVelocity = newVelocity * slideBoost;
                     sliding = true;
@@ -303,7 +304,7 @@ public class PlayerControler : MonoBehaviour
                 movementDelta += wallForwardDirection * Mathf.Sqrt(forwardJumpForce * 3 * gravity);
                 return movementDelta;
             }
-            movementDelta = wallForwardDirection * runAcceleration * Time.deltaTime + wallNormal * -1;
+            movementDelta = wallForwardDirection * runAcceleration * Time.deltaTime + wallNormal * -1; // moves the player along a wall and applies a slight force to also stick to it better
         }
         return movementDelta;
     }

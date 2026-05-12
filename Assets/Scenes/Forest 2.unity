@@ -666,7 +666,7 @@ Transform:
   m_GameObject: {fileID: 96524784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.767, y: 2.65, z: 318.36}
+  m_LocalPosition: {x: 1.767, y: 2.77, z: 318.36}
   m_LocalScale: {x: 2.2966902, y: 1.9198767, z: 0.43183026}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2337,7 +2337,7 @@ Transform:
   m_GameObject: {fileID: 327377117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.93, y: 1.03, z: 327.084}
+  m_LocalPosition: {x: 0.93, y: 1.03, z: 327.991}
   m_LocalScale: {x: 1.1446856, y: 0.2793876, z: 1.8877308}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8837,7 +8837,7 @@ Transform:
   m_GameObject: {fileID: 1645016603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0025999993, y: 1.489, z: -16.537003}
+  m_LocalPosition: {x: 0.0025999993, y: 1.56, z: -16.537003}
   m_LocalScale: {x: 15.722046, y: 1.9198766, z: 0.43183032}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10056,10 +10056,6 @@ PrefabInstance:
       propertyPath: weaponText
       value: 
       objectReference: {fileID: 972809266}
-    - target: {fileID: 5290142592610692285, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 2560
-      objectReference: {fileID: 0}
     - target: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10100,25 +10096,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: dashForce
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: dashDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: maxDashSpeed
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177894532774348872, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -516,11 +516,11 @@ MonoBehaviour:
   inAirAcceleration: 10
   terminalVelocity: 50
   dashForce: 60
-  dashDuration: 0.15
+  dashDuration: 0.2
   dashCooldown: 0.5
   maxDashSpeed: 20
   wallCheckDistance: 0.5
-  wallRunGravity: 1
+  wallRunClimbGravity: 1
   wallRunFallingGravity: 0.2
   forwardJumpForce: 0.1
   sideJumpForce: 0.2
@@ -531,9 +531,10 @@ MonoBehaviour:
   lookSenseV: 0.1
   lookLimitV: 89
   slideBoost: 1.5
-  minSpeedForSlide: 0.7
-  crouchSpeed: 0.5
+  minSpeedForSlide: 0.5
+  crouchSpeed: 0.8
   crouchingHeight: 0.5
+  maxSlideSpeed: 12
 --- !u!114 &9218551938654307651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +560,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
@@ -694,7 +695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3105688622190179809}
   - component: {fileID: 7511989846182999600}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
