@@ -34,7 +34,7 @@ public class PlayerState : MonoBehaviour
     {
         return IsStateGroundedState(CurrentPlayerMovementState);
     }
-    public bool IsStateGroundedState(PlayerMovementState playerMovementState) // If the player is Idling or Running then we know they're on the ground duh 
+    public bool IsStateGroundedState(PlayerMovementState playerMovementState) 
     {
         return playerMovementState == PlayerMovementState.Idling ||
             playerMovementState == PlayerMovementState.Running ||

@@ -45,7 +45,7 @@ public class CameraEffects : MonoBehaviour
 
     private void DashFOVChange()
     {
-        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
+        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing && playerState.CurrentPlayerMovementState != PlayerMovementState.Grinding)
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV + dashFOVBonus, FOVChangeSpeed * Time.deltaTime);
         else
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV, FOVChangeSpeed * Time.deltaTime);

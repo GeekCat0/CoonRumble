@@ -53,14 +53,10 @@ public class Projectile : MonoBehaviour
         for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<Health>().TakeDamage(explosionDamage);
+            Debug.Log(enemies[i]);
         }
-
-        Invoke(nameof(Delay), 0.01f);
-    }
-
-    private void Delay()
-    {
         Destroy(gameObject);
+
     }
 
     private void OnCollisionEnter(Collision collision)

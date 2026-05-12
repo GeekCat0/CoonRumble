@@ -159,10 +159,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   enemyTag: Enemy
-  bounciness: 0.71
+  bounciness: 0.691
   useGravity: 1
   explosionDamage: 100
   explosionRange: 2
-  maxCollisions: 1
+  maxCollisions: 3
   maxLifeTime: 2
   explodeOnTouch: 1

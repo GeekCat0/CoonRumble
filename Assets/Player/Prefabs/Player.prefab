@@ -452,7 +452,6 @@ GameObject:
   - component: {fileID: 7919962399380564176}
   - component: {fileID: 9218551938654307651}
   - component: {fileID: 5290142592610692285}
-  - component: {fileID: 553515652329240810}
   - component: {fileID: 8627961262705353922}
   - component: {fileID: 8576537671619558780}
   - component: {fileID: 1692057558105486227}
@@ -483,6 +482,7 @@ Transform:
   - {fileID: 3283241424152896836}
   - {fileID: 8223741148664749949}
   - {fileID: 5965920805618002469}
+  - {fileID: 3105688622190179809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7919962399380564176
@@ -506,27 +506,33 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   runAcceleration: 35
-  maxRunSpeed: 6
+  maxRunSpeed: 7.5
   drag: 20
   airDrag: 10
   slideDrag: 5
   movingTreshold: 0.01
   gravity: 20
   jumpSpeed: 0.7
-  inAirAcceleration: 20
+  inAirAcceleration: 10
   terminalVelocity: 50
   dashForce: 60
-  dashDuration: 0.2
+  dashDuration: 0.15
   dashCooldown: 0.5
   maxDashSpeed: 20
   wallCheckDistance: 0.5
-  wallRunGravity: 3
+  wallRunGravity: 1
+  wallRunFallingGravity: 0.2
+  forwardJumpForce: 0.1
+  sideJumpForce: 0.2
+  upJumpForce: 0.7
+  wallStartBoost: 5
+  maxWallRunSpeed: 9
   lookSenseH: 0.1
   lookSenseV: 0.1
   lookLimitV: 89
   slideBoost: 1.5
   minSpeedForSlide: 0.7
-  crouchSpeed: 0.7
+  crouchSpeed: 0.5
   crouchingHeight: 0.5
 --- !u!114 &9218551938654307651
 MonoBehaviour:
@@ -564,29 +570,6 @@ CharacterController:
   m_StepOffset: 0.25
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.00001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &553515652329240810
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8279768708685429064}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 1527
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17
-  m_Height: 0.52
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8627961262705353922
 MonoBehaviour:
@@ -701,3 +684,58 @@ MonoBehaviour:
   heightOffset: {x: 0, y: 0.4, z: 0}
   endLaunchForce: 1
   jumpLaunchForce: 1.5
+--- !u!1 &9177894532774348872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3105688622190179809}
+  - component: {fileID: 7511989846182999600}
+  m_Layer: 0
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3105688622190179809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177894532774348872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7251710620919821313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7511989846182999600
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177894532774348872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1527
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Height: 0.52
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

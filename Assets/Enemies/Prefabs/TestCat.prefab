@@ -141,14 +141,14 @@ MonoBehaviour:
   runSpeed: 5
   walkSpeed: 1
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
+  walkPointRange: 2
   canPatrol: 1
-  timeBetweenAttacks: 1
-  aggroDuration: 3
-  forwardForce: 70
+  timeBetweenAttacks: 0.5
+  aggroDuration: 5
+  forwardForce: 15
   upwardForce: 0
-  sightRange: 10
-  attackRange: 5
+  sightRange: 12
+  attackRange: 8
 --- !u!195 &2016034922824325110
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -32,7 +32,8 @@ public class PlayerControler : MonoBehaviour
 
     [Header("WallRun Settings")] // Variables for Wall running
     [SerializeField] private float wallCheckDistance = 1.0f;
-    [SerializeField] private float wallRunGravity = 1.0f;
+    [SerializeField] private float wallRunClimbGravity = 1.0f;
+    [SerializeField] private float wallRunFallingGravity = 1.0f;
     [SerializeField] private float forwardJumpForce = 3.0f;
     [SerializeField] private float sideJumpForce = 3.0f;
     [SerializeField] private float upJumpForce = 3.0f;
@@ -110,13 +111,13 @@ public class PlayerControler : MonoBehaviour
             playerState.SetPlayerMovementState(lateralState);
 
             // Control Airborn State
-            if ((!isGrounded || jumpedLastFrame) && characterController.velocity.y >= 0f)
+            if ((!isGrounded || jumpedLastFrame) && characterController.velocity.y > 0f)
             {
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
                 jumpedLastFrame = false;
                 characterController.stepOffset = 0f;        // <- Character controller step handling can be junky mid air so we turn it off until we're grounded again
             }
-            else if ((!isGrounded || jumpedLastFrame) && characterController.velocity.y < 0f)
+            else if ((!isGrounded || jumpedLastFrame) && characterController.velocity.y <= 0f)
             {
                 playerState.SetPlayerMovementState(PlayerMovementState.Falling);
                 jumpedLastFrame = false;
@@ -135,11 +136,9 @@ public class PlayerControler : MonoBehaviour
 
         // Add gravity, while wall running we add less
         if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
-            verticalVelocity -= verticalVelocity < 1 ? gravity * wallRunGravity * Time.deltaTime : gravity * wallRunGravity * 0.5f * Time.deltaTime;
+            verticalVelocity -= verticalVelocity < 0 ? gravity * wallRunClimbGravity * Time.deltaTime : gravity * wallRunFallingGravity * Time.deltaTime;
         else
-            verticalVelocity -= gravity * Time.deltaTime;
-
-        //verticalVelocity -= playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning ? gravity * Time.deltaTime : (gravity / wallRunGravity) * Time.deltaTime;     
+            verticalVelocity -= gravity * Time.deltaTime;    
 
             // Here we add the max speed a player is able to move to the vertical velocity so that they stick to the ground while walking off steep slopes
         if (isGrounded && verticalVelocity < 0)
@@ -178,7 +177,6 @@ public class PlayerControler : MonoBehaviour
         Vector3 movementDelta = movementDirection * lateralAcceleration * Time.deltaTime;
         movementDelta = HandleWallRunning(movementDelta);
 
-
         Vector3 newVelocity = playerLocomotionInput.SlideHeld ? characterController.velocity : characterController.velocity + movementDelta;
 
         // Handles dashing together with the method 
@@ -188,46 +186,48 @@ public class PlayerControler : MonoBehaviour
             newVelocity = newVelocity + movementDelta * dashForce;
         }
 
-
         // Add drag to player
         Vector3 currentDrag = newVelocity.normalized * drag * Time.deltaTime;
         transform.localScale = new Vector3(1,1,1);
-        if (!isGrounded && playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning)
+
+        if (playerState.CurrentPlayerActionState != PlayerActionState.Dashing)
         {
-            currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
-            maxMovementSpeed = maxDashSpeed;
-            sliding = false;
-        }
-        else if (playerLocomotionInput.SlideHeld)
-        {
-            if (newVelocity.magnitude < maxRunSpeed * minSpeedForSlide)
+            if (!isGrounded && playerState.CurrentPlayerMovementState != PlayerMovementState.WallRunning)
             {
-                maxMovementSpeed = maxRunSpeed * crouchSpeed;
-                newVelocity = characterController.velocity + movementDelta;
+                currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
+                maxMovementSpeed = maxDashSpeed;
+                sliding = false;
+            }
+            else if (playerLocomotionInput.SlideHeld)
+            {
+                if (newVelocity.magnitude < maxRunSpeed * minSpeedForSlide)
+                {
+                    maxMovementSpeed = maxRunSpeed * crouchSpeed;
+                    newVelocity = characterController.velocity + movementDelta;
+                }
+                else
+                {
+                    maxMovementSpeed = maxDashSpeed;
+                    if (!sliding)
+                        newVelocity = newVelocity * slideBoost;
+                    sliding = true;
+                    playerState.SetPlayerMovementState(PlayerMovementState.Sliding);
+                    currentDrag = newVelocity.normalized * slideDrag * Time.deltaTime;
+                }
+                transform.localScale = new Vector3(0.8f, crouchingHeight, 0.8f);
+            }
+            else if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
+            {
+                currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
+                maxMovementSpeed = maxWallRunSpeed;
+                sliding = false;
             }
             else
             {
-                maxMovementSpeed = maxDashSpeed;
-                if (!sliding)
-                    newVelocity = newVelocity * slideBoost;
-                sliding = true;
-                playerState.SetPlayerMovementState(PlayerMovementState.Sliding);
-                currentDrag = newVelocity.normalized * slideDrag * Time.deltaTime;
+                sliding = false;
+                maxMovementSpeed = maxRunSpeed;
             }
-            transform.localScale = new Vector3(0.8f, crouchingHeight, 0.8f);
         }
-        else if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
-        {
-            currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
-            maxMovementSpeed = maxWallRunSpeed;
-            sliding = false;
-        }
-        else
-        {
-            sliding = false;
-            maxMovementSpeed = maxRunSpeed;
-        }
-
 
         newVelocity = (newVelocity.magnitude > drag * Time.deltaTime) ? newVelocity - currentDrag : Vector3.zero;
         newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), maxMovementSpeed);
@@ -303,8 +303,7 @@ public class PlayerControler : MonoBehaviour
                 movementDelta += wallForwardDirection * Mathf.Sqrt(forwardJumpForce * 3 * gravity);
                 return movementDelta;
             }
-
-            movementDelta = wallForwardDirection * runAcceleration * Time.deltaTime;
+            movementDelta = wallForwardDirection * runAcceleration * Time.deltaTime + wallNormal * -1;
         }
         return movementDelta;
     }
