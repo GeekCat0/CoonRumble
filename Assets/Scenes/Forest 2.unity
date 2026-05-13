@@ -5504,6 +5504,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959121243}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &967806020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6457305789736505567, guid: 42d9d7b5e09b51549a8d6a000b210269, type: 3}
+  m_PrefabInstance: {fileID: 398392245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &972809266 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 791968449582941858, guid: 42d9d7b5e09b51549a8d6a000b210269, type: 3}
@@ -10048,6 +10053,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: speedLines
+      value: 
+      objectReference: {fileID: 967806020}
     - target: {fileID: 1692057558105486227, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: healthText
       value: 
@@ -10095,14 +10104,6 @@ PrefabInstance:
     - target: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: wallStartBoost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
-      propertyPath: inAirAcceleration
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_Name

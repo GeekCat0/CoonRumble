@@ -513,7 +513,7 @@ MonoBehaviour:
   movingTreshold: 0.01
   gravity: 20
   jumpSpeed: 0.7
-  inAirAcceleration: 10
+  inAirAcceleration: 15
   terminalVelocity: 50
   dashForce: 60
   dashDuration: 0.2
@@ -525,7 +525,7 @@ MonoBehaviour:
   forwardJumpForce: 0.1
   sideJumpForce: 0.2
   upJumpForce: 0.5
-  wallStartBoost: 5
+  wallStartBoost: 3
   maxWallRunSpeed: 9
   lookSenseH: 0.1
   lookSenseV: 0.1
@@ -651,6 +651,9 @@ MonoBehaviour:
   FOVChangeSpeed: 30
   rotationAmount: 7
   rotationSpeed: 10
+  speedLines: {fileID: 0}
+  speedForLines: 12
+  minTimeForLines: 2
 --- !u!114 &5246056573898773160
 MonoBehaviour:
   m_ObjectHideFlags: 0
