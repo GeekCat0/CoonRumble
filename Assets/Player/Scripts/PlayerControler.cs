@@ -375,4 +375,8 @@ public class PlayerControler : MonoBehaviour
     {
         additionalForwardForce = force;
     }
+    public float GetVelocity()
+    {
+        return characterController.velocity.magnitude;
+    }
 }
