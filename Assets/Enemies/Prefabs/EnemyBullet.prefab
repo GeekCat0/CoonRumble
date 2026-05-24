@@ -161,7 +161,7 @@ MonoBehaviour:
   enemyTag: Player
   bounciness: 0
   useGravity: 0
-  explosionDamage: 5
+  explosionDamage: 10
   explosionRange: 0.3
   maxCollisions: 0
   maxLifeTime: 2

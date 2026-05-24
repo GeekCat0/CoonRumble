@@ -142,13 +142,13 @@ MonoBehaviour:
   walkSpeed: 1
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
-  canPatrol: 1
-  timeBetweenAttacks: 0.5
+  canPatrol: 0
+  timeBetweenAttacks: 0.3
   aggroDuration: 5
-  forwardForce: 15
+  forwardForce: 12
   upwardForce: 0
-  sightRange: 12
-  attackRange: 8
+  sightRange: 17
+  attackRange: 17
 --- !u!195 &2016034922824325110
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,8 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048ae512a0568ec469db0c25b6cd4248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 100
+  maxHealth: 40
+  health: 40
   canGetKilled: 1
   deathDelay: 0.05
   healthText: {fileID: 0}
+  isPlayer: 0
   tookDamage: 0

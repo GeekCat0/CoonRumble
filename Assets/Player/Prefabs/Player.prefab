@@ -515,17 +515,18 @@ MonoBehaviour:
   jumpSpeed: 0.7
   inAirAcceleration: 15
   terminalVelocity: 50
+  jumpLockDelay: 0.1
   dashForce: 60
   dashDuration: 0.2
   dashCooldown: 0.5
   maxDashSpeed: 20
   wallCheckDistance: 0.5
-  wallRunClimbGravity: 1
-  wallRunFallingGravity: 0.2
-  forwardJumpForce: 0.1
+  wallRunClimbGravity: 0.85
+  wallRunFallingGravity: 0.3
+  forwardJumpForce: 0.05
   sideJumpForce: 0.2
-  upJumpForce: 0.5
-  wallStartBoost: 3
+  upJumpForce: 0.3
+  wallStartBoost: 4
   maxWallRunSpeed: 9
   lookSenseH: 0.1
   lookSenseV: 0.1
@@ -535,6 +536,7 @@ MonoBehaviour:
   crouchSpeed: 0.8
   crouchingHeight: 0.5
   maxSlideSpeed: 12
+  canJump: 0
 --- !u!114 &9218551938654307651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,10 +615,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048ae512a0568ec469db0c25b6cd4248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
   health: 100
   canGetKilled: 0
   deathDelay: 1
   healthText: {fileID: 0}
+  isPlayer: 1
   tookDamage: 0
 --- !u!114 &5464391772220309583
 MonoBehaviour:
