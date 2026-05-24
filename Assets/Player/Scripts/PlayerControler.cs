@@ -18,11 +18,12 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float slideDrag = 0.1f;
     [SerializeField] private float movingTreshold = 0.01f;
 
-    [Header("Movement Settings")] // Variables for mid air movement/jumping
+    [Header("Air Settings")] // Variables for mid air movement/jumping
     [SerializeField] private float gravity = 25f;
     [SerializeField] private float jumpSpeed = 1.0f;
     [SerializeField] private float inAirAcceleration = 0.15f;
     [SerializeField] private float terminalVelocity = 50f;
+    [SerializeField] private float jumpLockDelay = 0.1f;
 
     [Header("Dashing Settings")] // Variables for dashing
     [SerializeField] private float dashForce = 3.0f;
@@ -63,6 +64,8 @@ public class PlayerControler : MonoBehaviour
     private float verticalVelocity = 0f;
     private float antiBump;
     private bool jumpedLastFrame = false;
+    [SerializeField] private bool canJump = false;
+    private float jumpTimer = 0f;
     private float stepOffset;
     private float maxMovementSpeed = 4f;
     private bool dashOffCooldown = true;
@@ -136,6 +139,17 @@ public class PlayerControler : MonoBehaviour
     {
         bool isGrounded = playerState.InGroundedState();
 
+        if (isGrounded)
+        {
+            canJump = true;
+            jumpTimer = 0f;
+        }
+        else if (jumpTimer >= jumpLockDelay)
+            canJump = false;
+        else
+            jumpTimer += Time.deltaTime;
+
+
         // Add gravity, while wall running we add less
         if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
             verticalVelocity -= verticalVelocity < 0 ? gravity * wallRunClimbGravity * Time.deltaTime : gravity * wallRunFallingGravity * Time.deltaTime;
@@ -147,7 +161,7 @@ public class PlayerControler : MonoBehaviour
             verticalVelocity = -antiBump;
 
         // Handle jumping
-        if (playerLocomotionInput.JumpPressed && isGrounded)
+        if (playerLocomotionInput.JumpPressed && canJump)
         {
             Jump(1);
         }
