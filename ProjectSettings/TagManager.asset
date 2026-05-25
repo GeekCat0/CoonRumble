@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Rail
+  - Hitmarker
   layers:
   - Default
   - TransparentFX

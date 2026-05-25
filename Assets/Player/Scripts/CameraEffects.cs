@@ -19,6 +19,7 @@ public class CameraEffects : MonoBehaviour
     [SerializeField] float minTimeForLines = 1;
     private float linesTimer = 0;
     private float targetRotation = 0;
+    private bool speedy = false;
 
 
 
@@ -50,7 +51,7 @@ public class CameraEffects : MonoBehaviour
 
     private void DashFOVChange()
     {
-        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing || playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding)
+        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing || speedy)
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV + dashFOVBonus, FOVChangeSpeed * Time.deltaTime);
         else
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV, FOVChangeSpeed * Time.deltaTime);
@@ -58,7 +59,7 @@ public class CameraEffects : MonoBehaviour
 
     private void SpeedLines()
     {
-        if (playerControler.GetVelocity() >= speedForLines || playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding)
+        if (playerControler.GetVelocity().magnitude >= speedForLines || playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding)
             linesTimer += Time.deltaTime * 10;
         else
             linesTimer -= Time.deltaTime * 10;
@@ -68,9 +69,13 @@ public class CameraEffects : MonoBehaviour
         if (linesTimer >= minTimeForLines)
         {
             speedLines.SetActive(true);
+            speedy = true;
         }
         else
+        {
             speedLines.SetActive(false);
+            speedy = false;
+        }
 
     }
 }

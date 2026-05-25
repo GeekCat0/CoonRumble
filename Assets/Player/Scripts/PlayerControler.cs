@@ -40,6 +40,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float upJumpForce = 3.0f;
     [SerializeField] private float wallStartBoost = 1f;
     [SerializeField] private float maxWallRunSpeed = 4f;
+    [SerializeField] private float wallDrag = 1f;
 
     [Header("Camera Settings")] // Variables for camera control
     public float lookSenseH = 0.1f;
@@ -97,6 +98,7 @@ public class PlayerControler : MonoBehaviour
         UpdateMovementState(); 
         HandleVerticalMovement();
         HandleLateralMovement();
+        Debug.Log(characterController.velocity.magnitude);
     }
 
     private void UpdateMovementState() 
@@ -198,7 +200,7 @@ public class PlayerControler : MonoBehaviour
         additionalForwardForce = 0;
 
         // Handles dashing together with the method 
-        if (playerLocomotionInput.DashPressed && dashOffCooldown)
+        if (playerLocomotionInput.DashPressed && dashOffCooldown && playerState.CurrentPlayerMovementState != PlayerMovementState.Grinding )
         {
             StartCoroutine(HandleDashing());
             newVelocity = newVelocity + movementDelta * dashForce;
@@ -236,7 +238,7 @@ public class PlayerControler : MonoBehaviour
             }
             else if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
             {
-                currentDrag = newVelocity.normalized * airDrag * Time.deltaTime;
+                currentDrag = newVelocity.normalized * wallDrag * Time.deltaTime;
                 maxMovementSpeed = maxWallRunSpeed;
                 sliding = false;
             }
@@ -389,8 +391,8 @@ public class PlayerControler : MonoBehaviour
     {
         additionalForwardForce = force;
     }
-    public float GetVelocity()
+    public Vector3 GetVelocity()
     {
-        return characterController.velocity.magnitude;
+        return characterController.velocity;
     }
 }

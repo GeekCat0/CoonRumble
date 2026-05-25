@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   <bullet>k__BackingField: {fileID: 9003478398312656354, guid: b8127eea5261cc541af37bbc9e2b9cb0, type: 3}
-  <shootForce>k__BackingField: 20
+  <shootForce>k__BackingField: 50
   <upwardForce>k__BackingField: 0
   <timeBetweenShooting>k__BackingField: 1
-  <spread>k__BackingField: 6
+  <spread>k__BackingField: 4
   <timeBetweenShots>k__BackingField: 0
   <fullAuto>k__BackingField: 0
   <adaptiveAim>k__BackingField: 0
   <magazineSize>k__BackingField: 1000
-  <bulletsPerTap>k__BackingField: 10
+  <bulletsPerTap>k__BackingField: 30

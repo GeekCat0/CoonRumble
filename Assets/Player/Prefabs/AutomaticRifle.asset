@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AutomaticRifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   <bullet>k__BackingField: {fileID: 9003478398312656354, guid: 92cf223faa497474e95185915ac8882c, type: 3}
-  <shootForce>k__BackingField: 30
+  <shootForce>k__BackingField: 60
   <upwardForce>k__BackingField: 0
   <timeBetweenShooting>k__BackingField: 0.1
   <spread>k__BackingField: 0.1

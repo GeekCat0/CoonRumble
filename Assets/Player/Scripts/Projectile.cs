@@ -19,6 +19,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int maxCollisions = 1;
     [SerializeField] private float maxLifeTime = 1;
     [SerializeField] private bool explodeOnTouch = true;
+    [SerializeField] private AudioSource hitmarkerSound;
+    [SerializeField] private bool hitSound = false;
 
     private int collisions;
     private PhysicsMaterial physicsMat;
@@ -30,6 +32,7 @@ public class Projectile : MonoBehaviour
         physicsMat.frictionCombine = PhysicsMaterialCombine.Minimum;
         physicsMat.bounceCombine = PhysicsMaterialCombine.Maximum;
 
+        hitmarkerSound = GameObject.FindWithTag("Hitmarker").GetComponent<AudioSource>();
         GetComponent<SphereCollider>().material = physicsMat;
         rb.useGravity = useGravity;
     }
@@ -53,6 +56,12 @@ public class Projectile : MonoBehaviour
         for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<Health>().TakeDamage(explosionDamage);
+
+            if (hitSound)
+            {
+                hitmarkerSound.Stop();
+                hitmarkerSound.Play();
+            }
         }
         Destroy(gameObject);
 

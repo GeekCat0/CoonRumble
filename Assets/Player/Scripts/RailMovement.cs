@@ -33,6 +33,7 @@ public class RailMovement : MonoBehaviour
     {
         if (other.CompareTag("Rail") && !isGrinding)
         {
+
             if (Vector3.Dot(transform.forward, other.transform.forward) >= 0f)
                 direction = 1;
             else

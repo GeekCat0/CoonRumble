@@ -166,3 +166,5 @@ MonoBehaviour:
   maxCollisions: 3
   maxLifeTime: 2
   explodeOnTouch: 1
+  hitmarkerSound: {fileID: 0}
+  hitSound: 1
