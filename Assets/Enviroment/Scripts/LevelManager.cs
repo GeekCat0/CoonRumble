@@ -3,14 +3,15 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Transform currentCheckpoint;
-    [SerializeField] private CharacterController playerControler;
+    private CharacterController characterController;
+    private PlayerControler playerController;
 
     private EnemyAi[] enemies;
     public void SetCheckpoint(Transform checkpoint)
     {
         currentCheckpoint = checkpoint;
-        enemies = FindObjectsByType<EnemyAi>();
-        playerControler = FindAnyObjectByType<CharacterController>();
+        characterController = FindAnyObjectByType<CharacterController>();
+        playerController = FindAnyObjectByType<PlayerControler>();
     }
     public void ResetEnemies()
     {
@@ -22,10 +23,16 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadCheckpoint()
     {
-        playerControler.enabled = false; // Disable the character controller to prevent physics issues when teleporting
-        playerControler.gameObject.transform.position = currentCheckpoint.position;
-        playerControler.enabled = true;
-        playerControler.GetComponent<Health>().ResetHealth();
+        characterController.enabled = false; // Disable the character controller to prevent physics issues when teleporting
+        characterController.gameObject.transform.position = currentCheckpoint.position;
+        characterController.enabled = true;
+        characterController.GetComponent<Health>().ResetHealth();
+        playerController.SetPlatform(null);
+        playerController.SetObjectToFollow(null);
         ResetEnemies();
+    }
+    public void SetEnemies(EnemyAi[] currentEnemies)
+    {
+        enemies = currentEnemies;
     }
 }

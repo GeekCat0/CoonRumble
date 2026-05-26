@@ -77,9 +77,9 @@ public class PlayerControler : MonoBehaviour
     public bool wallRight { get; private set; } = false ; 
     private bool startedWallRun = false;
     private Transform objectToFollow;
-    [SerializeField] private Transform movingPlatform;
-    [SerializeField] private Vector3 lastPlatformPos;
-    private Vector3 platformOffset = Vector3.zero;
+    private Transform movingPlatform;
+    private Vector3 lastPlatformPos;
+    private bool leftPlatformLastFrame = false;
 
     private PlayerMovementState lastMovementState = PlayerMovementState.Falling;
 
@@ -261,11 +261,19 @@ public class PlayerControler : MonoBehaviour
             newVelocity = (objectToFollow.position - this.transform.position) / Time.deltaTime;
         }
 
-        if (movingPlatform != null) // work in progress
+        if (movingPlatform != null) 
         {
             Vector3 platformVelocity = (movingPlatform.position - lastPlatformPos);
-            characterController.Move(platformVelocity);
-            lastPlatformPos = movingPlatform.position;
+            if (leftPlatformLastFrame && isGrounded)
+            {
+                movingPlatform = null;
+                leftPlatformLastFrame = false;
+            }
+            else
+            {
+                characterController.Move(platformVelocity);
+                lastPlatformPos = movingPlatform.position;
+            }
         }
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
@@ -411,7 +419,12 @@ public class PlayerControler : MonoBehaviour
     public void SetPlatform(Transform platform)
     {
         movingPlatform = platform;
+        leftPlatformLastFrame = false;
         if (platform != null)
             lastPlatformPos = platform.position;
+    }
+    public void LeavePlatform()
+    { 
+        leftPlatformLastFrame = true;
     }
 }

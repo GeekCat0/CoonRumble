@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    [SerializeField] private EnemyAi[] enemies;
     private LevelManager levelManager;
 
     private void Start()
@@ -13,6 +14,7 @@ public class Checkpoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             levelManager.SetCheckpoint(transform);
+            levelManager.SetEnemies(enemies);
         }
     }
 }

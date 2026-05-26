@@ -10,8 +10,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
     [SerializeField] private float speed;
+    [SerializeField] private bool teleporting = false;
 
-    private bool playerOnPlatform = false;
     private Vector3 targetPosition;
     private PlayerControler playerControler;
 
@@ -27,7 +27,10 @@ public class MovingPlatform : MonoBehaviour
 
         if (Vector3.Distance(platform.position, targetPosition) < 0.01f)
         {
-            targetPosition = targetPosition == pointA.position ? pointB.position : pointA.position;
+            if (teleporting) 
+                platform.position = pointB.position;
+            else
+                targetPosition = targetPosition == pointA.position ? pointB.position : pointA.position;
         }
     }
 
@@ -42,7 +45,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            playerControler.SetPlatform(null);
+            playerControler.LeavePlatform();
         }
     }
 }
