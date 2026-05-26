@@ -6,9 +6,8 @@ using UnityEngine.Splines;
 public class RailMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
-    [SerializeField] private Vector3 heightOffset = new Vector3(0, 1, 0);
     [SerializeField] private float endLaunchForce = 1f;
-    [SerializeField] private float jumpLaunchForce = 1.5f;
+    [SerializeField] private float jumpLaunchForce = 1f;
 
     private bool isGrinding = false;
     private int direction = 1; // 1 for forward, -1 for backward
@@ -65,19 +64,19 @@ public class RailMovement : MonoBehaviour
             if (playerLocomotionInput.JumpPressed)
             {
                 Invoke(nameof(cooldown), 0.5f);
+                playerControler.SetObjectToFollow(null);
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
                 playerControler.Jump(jumpLaunchForce);
-                playerControler.AddForwardForce(jumpLaunchForce);
                 yield break;
             }
             animatedObj.NormalizedTime += (Time.deltaTime * calculatedSpeed * direction);
-            transform.position = animatedObj.transform.position + heightOffset;
+            playerControler.SetObjectToFollow(animatedObj.transform);
             yield return null;
         }
         Invoke(nameof(cooldown), 0.5f);
+        playerControler.SetObjectToFollow(null);
         playerState.SetPlayerMovementState(PlayerMovementState.Idling);
         playerControler.Jump(endLaunchForce);
-        playerControler.AddForwardForce(jumpLaunchForce);
     }
 
     private void cooldown()

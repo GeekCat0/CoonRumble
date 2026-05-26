@@ -65,7 +65,7 @@ public class PlayerControler : MonoBehaviour
     private float verticalVelocity = 0f;
     private float antiBump;
     private bool jumpedLastFrame = false;
-    [SerializeField] private bool canJump = false;
+    private bool canJump = false;
     private float jumpTimer = 0f;
     private float stepOffset;
     private float maxMovementSpeed = 4f;
@@ -74,11 +74,15 @@ public class PlayerControler : MonoBehaviour
     private RaycastHit rightWallHit;
     private RaycastHit lastRunnedWall;
     private bool wallLeft = false;
-    private float additionalForwardForce = 0;
     public bool wallRight { get; private set; } = false ; 
     private bool startedWallRun = false;
+    private Transform objectToFollow;
+    [SerializeField] private Transform movingPlatform;
+    [SerializeField] private Vector3 lastPlatformPos;
+    private Vector3 platformOffset = Vector3.zero;
 
     private PlayerMovementState lastMovementState = PlayerMovementState.Falling;
+
 
     private void Awake() // Set variables that need it and lock the cursor
     {
@@ -98,7 +102,6 @@ public class PlayerControler : MonoBehaviour
         UpdateMovementState(); 
         HandleVerticalMovement();
         HandleLateralMovement();
-        Debug.Log(characterController.velocity.magnitude);
     }
 
     private void UpdateMovementState() 
@@ -196,8 +199,6 @@ public class PlayerControler : MonoBehaviour
         movementDelta = HandleWallRunning(movementDelta);
 
         Vector3 newVelocity = playerLocomotionInput.SlideHeld ? characterController.velocity : characterController.velocity + movementDelta;
-        newVelocity += movementDirection * additionalForwardForce;
-        additionalForwardForce = 0;
 
         // Handles dashing together with the method 
         if (playerLocomotionInput.DashPressed && dashOffCooldown && playerState.CurrentPlayerMovementState != PlayerMovementState.Grinding )
@@ -254,6 +255,18 @@ public class PlayerControler : MonoBehaviour
         newVelocity.y += verticalVelocity;
         newVelocity = !isGrounded ? HandleSteepWalls(newVelocity, characterController.slopeLimit) : newVelocity;
         newVelocity = playerLocomotionInput.SlideHeld ? (HandleSteepWalls(newVelocity, 15)) : newVelocity;
+
+        if (objectToFollow != null)
+        {
+            newVelocity = (objectToFollow.position - this.transform.position) / Time.deltaTime;
+        }
+
+        if (movingPlatform != null) // work in progress
+        {
+            Vector3 platformVelocity = (movingPlatform.position - lastPlatformPos);
+            characterController.Move(platformVelocity);
+            lastPlatformPos = movingPlatform.position;
+        }
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
     }
@@ -387,12 +400,18 @@ public class PlayerControler : MonoBehaviour
         verticalVelocity += Mathf.Sqrt(jumpSpeed * 3 * gravity * force);
         jumpedLastFrame = true;
     }
-    public void AddForwardForce(float force)
-    {
-        additionalForwardForce = force;
-    }
     public Vector3 GetVelocity()
     {
         return characterController.velocity;
+    }
+    public void SetObjectToFollow(Transform following)
+    {
+        objectToFollow = following;
+    }
+    public void SetPlatform(Transform platform)
+    {
+        movingPlatform = platform;
+        if (platform != null)
+            lastPlatformPos = platform.position;
     }
 }
