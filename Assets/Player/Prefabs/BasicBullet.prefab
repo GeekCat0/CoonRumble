@@ -164,7 +164,7 @@ MonoBehaviour:
   explosionDamage: 8
   explosionRange: 0.05
   maxCollisions: 1
-  maxLifeTime: 2
+  maxLifeTime: 0.3
   explodeOnTouch: 1
   hitmarkerSound: {fileID: 0}
   hitSound: 1
