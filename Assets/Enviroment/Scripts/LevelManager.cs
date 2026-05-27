@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     {
         foreach (EnemyAi enemy in enemies)
         {
+            enemy.gameObject.transform.position = enemy.GetSpawnPoint();
             enemy.gameObject.SetActive(true);
             enemy.GetComponent<Health>().ResetHealth();
         }

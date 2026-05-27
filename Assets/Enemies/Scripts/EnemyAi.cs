@@ -45,10 +45,12 @@ public class EnemyAi : MonoBehaviour
     private bool playerInSightRange = false;
     private bool playerInAttackRange = false;
     private bool gotAttacked = false;
+    private Vector3 spawnPoint;
 
 
-    private void Awake()
+    private void Start()
     {
+        spawnPoint = transform.position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         healthScript = GetComponent<Health>();
@@ -181,6 +183,10 @@ public class EnemyAi : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+    public Vector3 GetSpawnPoint()
+    {
+        return spawnPoint;
     }
 
 }
