@@ -106,7 +106,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2624
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   enemyTag: Enemy
   bounciness: 0.691
   useGravity: 1
-  explosionDamage: 100
+  explosionDamage: 60
   explosionRange: 2
   maxCollisions: 3
   maxLifeTime: 2

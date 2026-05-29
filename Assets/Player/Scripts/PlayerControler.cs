@@ -209,6 +209,10 @@ public class PlayerControler : MonoBehaviour
 
         // Add drag to player
         Vector3 currentDrag = newVelocity.normalized * drag * Time.deltaTime;
+
+        if (movementDirection.magnitude == 0)
+            currentDrag = newVelocity.normalized * drag * 2 * Time.deltaTime;
+
         transform.localScale = new Vector3(1,1,1);
 
         if (playerState.CurrentPlayerActionState != PlayerActionState.Dashing)
