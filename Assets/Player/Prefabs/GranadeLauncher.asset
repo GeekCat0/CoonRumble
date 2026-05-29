@@ -15,7 +15,7 @@ MonoBehaviour:
   <bullet>k__BackingField: {fileID: 9003478398312656354, guid: 5e82660be39a63248921a0cf6db22967, type: 3}
   <shootForce>k__BackingField: 8
   <upwardForce>k__BackingField: 3
-  <timeBetweenShooting>k__BackingField: 2
+  <timeBetweenShooting>k__BackingField: 1.4
   <spread>k__BackingField: 0
   <timeBetweenShots>k__BackingField: 0
   <fullAuto>k__BackingField: 0

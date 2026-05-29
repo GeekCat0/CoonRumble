@@ -141,6 +141,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   enemyBullet: {fileID: 9003478398312656354, guid: 810a7da4672ae02479c1c64cb53d58e5, type: 3}
+  rayLayerMask:
+    serializedVersion: 2
+    m_Bits: 2513
   runSpeed: 0
   walkSpeed: 0
   canWalk: 0
@@ -148,12 +151,13 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   canPatrol: 0
-  timeBetweenAttacks: 0.2
+  timeBetweenAttacks: 0.18
   aggroDuration: 5
-  forwardForce: 12
+  forwardForce: 11
   upwardForce: 0
   attackDelay: 0
   meleDamage: 0
+  spread: 0.4
   sightRange: 17
   attackRange: 17
 --- !u!195 &11118600230039595

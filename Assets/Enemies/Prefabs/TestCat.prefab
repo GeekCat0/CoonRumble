@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
   enemyState: 0
   agent: {fileID: 2016034922824325110}
-  player: {fileID: 0}
+  playerLocation: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -138,8 +138,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   enemyBullet: {fileID: 9003478398312656354, guid: 810a7da4672ae02479c1c64cb53d58e5, type: 3}
+  rayLayerMask:
+    serializedVersion: 2
+    m_Bits: 2513
   runSpeed: 5
   walkSpeed: 1
+  canWalk: 0
+  melee: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   canPatrol: 0
@@ -147,6 +152,9 @@ MonoBehaviour:
   aggroDuration: 5
   forwardForce: 12
   upwardForce: 0
+  attackDelay: 0
+  meleDamage: 0
+  spread: 0
   sightRange: 17
   attackRange: 17
 --- !u!195 &2016034922824325110

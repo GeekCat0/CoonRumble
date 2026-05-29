@@ -161,10 +161,10 @@ MonoBehaviour:
   enemyTag: Enemy
   bounciness: 1
   useGravity: 0
-  explosionDamage: 5
+  explosionDamage: 4
   explosionRange: 0.05
   maxCollisions: 0
-  maxLifeTime: 0.4
+  maxLifeTime: 0.13
   explodeOnTouch: 1
   hitmarkerSound: {fileID: 0}
   hitSound: 1

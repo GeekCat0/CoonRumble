@@ -3,6 +3,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private EnemyAi[] enemies;
+    [SerializeField] private GameObject blockWall;
     private LevelManager levelManager;
 
     private void Start()
@@ -15,6 +16,13 @@ public class Checkpoint : MonoBehaviour
         {
             levelManager.SetCheckpoint(transform);
             levelManager.SetEnemies(enemies);
+
+            if (blockWall != null)
+                levelManager.SetWall(blockWall);
         }
+    }
+    public GameObject GetWall()
+    {
+        return blockWall;
     }
 }

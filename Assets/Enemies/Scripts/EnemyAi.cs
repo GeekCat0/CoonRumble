@@ -21,6 +21,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private GameObject enemyBullet;
+    [SerializeField] private LayerMask rayLayerMask;
     private Health healthScript;
     private PlayerControler playerControler;
 
@@ -43,6 +44,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float upwardForce;
     [SerializeField] private float attackDelay;
     [SerializeField] private int meleDamage;
+    [SerializeField] private float spread;
     private bool alreadyAttacked;
 
     [Header("Range")]
@@ -155,13 +157,20 @@ public class EnemyAi : MonoBehaviour
             if (!melee)
             {
                 agent.SetDestination(transform.position);
+                bool isHit = Physics.Raycast(transform.position, playerLocation.position - transform.position, out RaycastHit hit, attackRange, rayLayerMask, QueryTriggerInteraction.Ignore);
                 alreadyAttacked = true;
-                Rigidbody rb = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-                Vector3 direction = playerLocation.position - rb.position;
+                if (isHit && hit.collider.CompareTag("Hitbox"))
+                {
 
-                rb.AddForce(direction.normalized * forwardForce, ForceMode.Impulse);
-                rb.AddForce(transform.up * upwardForce, ForceMode.Impulse);
+                    Rigidbody rb = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                    Vector3 direction = playerLocation.position - rb.position;
+
+                    direction += new Vector3(Random.Range(-spread, spread), Random.Range(-spread / 2, spread / 2), Random.Range(-spread, spread));
+
+                    rb.AddForce(direction.normalized * forwardForce, ForceMode.Impulse);
+                    rb.AddForce(transform.up * upwardForce, ForceMode.Impulse);
+                }
             }
             else
             {

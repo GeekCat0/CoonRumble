@@ -15,10 +15,10 @@ MonoBehaviour:
   <bullet>k__BackingField: {fileID: 9003478398312656354, guid: b8127eea5261cc541af37bbc9e2b9cb0, type: 3}
   <shootForce>k__BackingField: 50
   <upwardForce>k__BackingField: 0
-  <timeBetweenShooting>k__BackingField: 1
+  <timeBetweenShooting>k__BackingField: 0.8
   <spread>k__BackingField: 4
   <timeBetweenShots>k__BackingField: 0
   <fullAuto>k__BackingField: 0
   <adaptiveAim>k__BackingField: 0
   <magazineSize>k__BackingField: 999999999
-  <bulletsPerTap>k__BackingField: 30
+  <bulletsPerTap>k__BackingField: 20

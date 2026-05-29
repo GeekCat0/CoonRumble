@@ -6,7 +6,9 @@ public class LevelManager : MonoBehaviour
     private CharacterController characterController;
     private PlayerControler playerController;
 
-    private EnemyAi[] enemies;
+    private EnemyAi[] enemies = { };
+    private bool allEnemiesDead = true;
+    private GameObject blockWall;
 
     public void Start()
     {
@@ -15,9 +17,21 @@ public class LevelManager : MonoBehaviour
 
     public void SetCheckpoint(Transform checkpoint)
     {
-        currentCheckpoint = checkpoint;
-        characterController = FindAnyObjectByType<CharacterController>();
-        playerController = FindAnyObjectByType<PlayerControler>();
+        allEnemiesDead = true;
+        foreach (EnemyAi enemy in enemies)
+        {
+            if (enemy.isActiveAndEnabled)
+                allEnemiesDead = false;
+        }
+        if (allEnemiesDead)
+        {
+            if (blockWall != null)
+                blockWall.SetActive(false);
+
+            currentCheckpoint = checkpoint;
+            characterController = FindAnyObjectByType<CharacterController>();
+            playerController = FindAnyObjectByType<PlayerControler>();
+        }
     }
     public void ResetEnemies()
     {
@@ -42,5 +56,9 @@ public class LevelManager : MonoBehaviour
     public void SetEnemies(EnemyAi[] currentEnemies)
     {
         enemies = currentEnemies;
+    }
+    public void SetWall(GameObject wall)
+    {
+        blockWall = wall;
     }
 }
