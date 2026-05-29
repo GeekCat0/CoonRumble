@@ -27,8 +27,10 @@ public class MovingPlatform : MonoBehaviour
 
         if (Vector3.Distance(platform.position, targetPosition) < 0.01f)
         {
-            if (teleporting) 
+            if (teleporting)
+            {
                 platform.position = pointB.position;
+            }
             else
                 targetPosition = targetPosition == pointA.position ? pointB.position : pointA.position;
         }

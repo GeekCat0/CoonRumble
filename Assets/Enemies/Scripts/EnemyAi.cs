@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,15 +17,18 @@ public class EnemyAi : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerLocation;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private GameObject enemyBullet;
     private Health healthScript;
+    private PlayerControler playerControler;
 
     [Header("Basic Stats")]
     [SerializeField] private float runSpeed;
     [SerializeField] private float walkSpeed;
+    [SerializeField] private bool canWalk;
+    [SerializeField] private bool melee;
 
     [Header("Patrolling stats")]
     [SerializeField] private Vector3 walkPoint;
@@ -37,6 +41,8 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float aggroDuration;
     [SerializeField] private float forwardForce;
     [SerializeField] private float upwardForce;
+    [SerializeField] private float attackDelay;
+    [SerializeField] private int meleDamage;
     private bool alreadyAttacked;
 
     [Header("Range")]
@@ -51,7 +57,8 @@ public class EnemyAi : MonoBehaviour
     private void Start()
     {
         spawnPoint = transform.position;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerLocation = FindAnyObjectByType<PlayerControler>().transform;
+        playerControler = FindAnyObjectByType<PlayerControler>();
         agent = GetComponent<NavMeshAgent>();
         healthScript = GetComponent<Health>();
         agent.speed = walkSpeed;
@@ -59,7 +66,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(player);
+        transform.LookAt(playerLocation);
         HandleEnemyState();
         HandleAgrro();
 
@@ -78,7 +85,7 @@ public class EnemyAi : MonoBehaviour
                 break;
 
             case EnemyState.Attacking:
-                AttackPlayer();
+                StartCoroutine(AttackPlayer());
                 break;
         }
     }
@@ -90,15 +97,15 @@ public class EnemyAi : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
         if (!playerInSightRange && !playerInAttackRange && !canPatrol) enemyState = EnemyState.Idling;
-        if (!playerInSightRange && !playerInAttackRange && canPatrol) enemyState = EnemyState.Patrolling;
-        if (playerInSightRange && !playerInAttackRange) enemyState = EnemyState.Chasing;
+        if (!playerInSightRange && !playerInAttackRange && canPatrol && canWalk) enemyState = EnemyState.Patrolling;
+        if (playerInSightRange && !playerInAttackRange && canWalk) enemyState = EnemyState.Chasing;
         if (playerInAttackRange) enemyState = EnemyState.Attacking;
 
         if (gotAttacked)
         {
             if (playerInAttackRange)
                 enemyState = EnemyState.Attacking;
-            else
+            else if (canWalk)
                 enemyState = EnemyState.Chasing;
         }
     }
@@ -106,6 +113,7 @@ public class EnemyAi : MonoBehaviour
     private void Idling()
     {
         // Just chilling
+        if (canWalk)
         agent.SetDestination(transform.position);
     }
     private void Patroling()
@@ -136,30 +144,40 @@ public class EnemyAi : MonoBehaviour
     private void ChasePlayer()
     {
         agent.speed = runSpeed;
-        agent.SetDestination(player.position);
+        agent.SetDestination(playerLocation.position);
     }
-    private void AttackPlayer()
+    private IEnumerator AttackPlayer()
     {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
+        transform.LookAt(playerLocation);
 
         if (!alreadyAttacked)
         {
-            alreadyAttacked = true;
-            Rigidbody rb = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            if (!melee)
+            {
+                agent.SetDestination(transform.position);
+                alreadyAttacked = true;
+                Rigidbody rb = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-            Vector3 direction = player.position - rb.position;
+                Vector3 direction = playerLocation.position - rb.position;
 
-            rb.AddForce(direction.normalized * forwardForce, ForceMode.Impulse);
-            rb.AddForce(transform.up * upwardForce, ForceMode.Impulse);
-
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                rb.AddForce(direction.normalized * forwardForce, ForceMode.Impulse);
+                rb.AddForce(transform.up * upwardForce, ForceMode.Impulse);
+            }
+            else
+            {
+                alreadyAttacked = true;
+                yield return new WaitForSeconds(attackDelay);
+                agent.SetDestination(transform.position);
+                if (playerInAttackRange)
+                {
+                    playerControler.GetComponent<Health>().TakeDamage(meleDamage);
+                    Debug.Log("mele");
+                }
+            }
+            yield return new WaitForSeconds(timeBetweenAttacks);
+            alreadyAttacked = false;
         }
-    }
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
+        yield return null;
     }
 
     public void HandleAgrro()
@@ -172,9 +190,12 @@ public class EnemyAi : MonoBehaviour
             Invoke(nameof(ResetAgrro), aggroDuration);
         }
     }
-    private void ResetAgrro()
+    public void ResetAgrro()
     {
+        alreadyAttacked = false;
         gotAttacked = false;
+        enemyState = EnemyState.Idling;
+        StopAllCoroutines();
     }
 
     private void OnDrawGizmosSelected()

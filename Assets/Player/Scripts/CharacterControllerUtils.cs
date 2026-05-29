@@ -9,7 +9,7 @@ public static class CharacterControllerUtils
         float distance = characterController.height / 2f + characterController.stepOffset + 0.01f;
 
         RaycastHit hit;
-        if (Physics.SphereCast(center, characterController.radius, Vector3.down, out hit, distance, layerMask))
+        if (Physics.SphereCast(center, characterController.radius / 2f, Vector3.down, out hit, distance, layerMask))
         {
             normal = hit.normal;
         }

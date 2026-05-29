@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 5.010025, y: 0.548, z: -10.599998}
-  m_LocalScale: {x: 0.14999998, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
   enemyState: 0
   agent: {fileID: 1391718005175967554}
-  player: {fileID: 0}
+  playerLocation: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -141,15 +141,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   enemyBullet: {fileID: 9003478398312656354, guid: 810a7da4672ae02479c1c64cb53d58e5, type: 3}
-  runSpeed: 5
-  walkSpeed: 2
+  runSpeed: 3.7
+  walkSpeed: 1
+  canWalk: 1
+  melee: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 1.5
+  walkPointRange: 2
   canPatrol: 1
-  timeBetweenAttacks: 0.2
+  timeBetweenAttacks: 0.4
   aggroDuration: 5
   forwardForce: 12
   upwardForce: 0
+  attackDelay: 0
+  meleDamage: 0
   sightRange: 17
   attackRange: 10
 --- !u!195 &1391718005175967554

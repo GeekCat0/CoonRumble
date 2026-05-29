@@ -20,5 +20,5 @@ MonoBehaviour:
   <timeBetweenShots>k__BackingField: 0
   <fullAuto>k__BackingField: 0
   <adaptiveAim>k__BackingField: 0
-  <magazineSize>k__BackingField: 1000
+  <magazineSize>k__BackingField: 999999999
   <bulletsPerTap>k__BackingField: 30

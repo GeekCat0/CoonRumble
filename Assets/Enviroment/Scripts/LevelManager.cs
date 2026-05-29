@@ -7,6 +7,12 @@ public class LevelManager : MonoBehaviour
     private PlayerControler playerController;
 
     private EnemyAi[] enemies;
+
+    public void Start()
+    {
+        Application.targetFrameRate = 165;
+    }
+
     public void SetCheckpoint(Transform checkpoint)
     {
         currentCheckpoint = checkpoint;
@@ -17,8 +23,9 @@ public class LevelManager : MonoBehaviour
     {
         foreach (EnemyAi enemy in enemies)
         {
-            enemy.gameObject.transform.position = enemy.GetSpawnPoint();
             enemy.gameObject.SetActive(true);
+            enemy.gameObject.transform.position = enemy.GetSpawnPoint();
+            enemy.ResetAgrro();
             enemy.GetComponent<Health>().ResetHealth();
         }
     }

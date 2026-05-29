@@ -144,7 +144,7 @@ public class PlayerControler : MonoBehaviour
     {
         bool isGrounded = playerState.InGroundedState();
 
-        if (isGrounded)
+        if (isGrounded && playerState.CurrentPlayerActionState != PlayerActionState.Dashing)
         {
             canJump = true;
             jumpTimer = 0f;
@@ -254,7 +254,7 @@ public class PlayerControler : MonoBehaviour
         newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), maxMovementSpeed);
         newVelocity.y += verticalVelocity;
         newVelocity = !isGrounded ? HandleSteepWalls(newVelocity, characterController.slopeLimit) : newVelocity;
-        newVelocity = playerLocomotionInput.SlideHeld ? (HandleSteepWalls(newVelocity, 15)) : newVelocity;
+        newVelocity += playerLocomotionInput.SlideHeld && isGrounded ? (HandleSteepWalls(newVelocity, 5)) : Vector3.zero;
 
         if (objectToFollow != null)
         {
@@ -281,6 +281,7 @@ public class PlayerControler : MonoBehaviour
 
     IEnumerator HandleDashing() // Mostly state logic and making sure the player is not stopped by their max run speed, time based so it's a Coroutine
     {
+        canJump = false;
         dashOffCooldown = false;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
         maxMovementSpeed = maxDashSpeed;
@@ -289,6 +290,9 @@ public class PlayerControler : MonoBehaviour
         playerState.SetPlayerActionState(PlayerActionState.Idling);
         yield return new WaitForSeconds(dashCooldown);
         dashOffCooldown = true;
+
+        if (IsGrounded())
+            canJump = true;
     }
 
     private Vector3 HandleWallRunning(Vector3 movementDelta)
@@ -367,9 +371,17 @@ public class PlayerControler : MonoBehaviour
         bool validAngle = angle <= slopeLimit;
 
         // If the player just fell on a too steep wall, we change the velocity so that they are falling towards the direction the slope is pointing instead of going straight down
-        if (!validAngle && verticalVelocity <= 0f)
+        if (!validAngle && verticalVelocity <= 0f && playerState.CurrentPlayerMovementState != PlayerMovementState.Sliding)
+        {
             velocity = Vector3.ProjectOnPlane(velocity, normal);
-
+        }
+        if (playerState.CurrentPlayerMovementState == PlayerMovementState.Sliding)
+        {
+            if (!validAngle)
+                velocity = new Vector3(normal.x, -gravity, normal.z) * angle * Time.deltaTime * 2;
+            else
+                velocity = Vector3.zero;
+        }
         return velocity;
     }
     private bool IsMovingLaterally() // Checks if the player is moving (mostly for state logic)
