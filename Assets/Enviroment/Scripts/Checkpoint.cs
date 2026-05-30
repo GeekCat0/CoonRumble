@@ -10,10 +10,11 @@ public class Checkpoint : MonoBehaviour
     {
         levelManager = FindAnyObjectByType<LevelManager>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            levelManager.checkIfAllowed();
             levelManager.SetCheckpoint(transform);
             levelManager.SetEnemies(enemies);
 

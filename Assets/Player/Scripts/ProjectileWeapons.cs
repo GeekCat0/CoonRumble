@@ -7,6 +7,7 @@ public class ProjectileWeapons : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask layerMask;
 
     private int bulletsLeft = 1;
     private int bulletsShot = 0;
@@ -53,7 +54,7 @@ public class ProjectileWeapons : MonoBehaviour
 
         // Check if ray hit anything
         Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit) && weaponData.adaptiveAim)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask) && weaponData.adaptiveAim)
             targetPoint = hit.point;
         else
             targetPoint = ray.GetPoint(50);

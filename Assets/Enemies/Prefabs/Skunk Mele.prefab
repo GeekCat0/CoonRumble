@@ -326,18 +326,18 @@ MonoBehaviour:
   rayLayerMask:
     serializedVersion: 2
     m_Bits: 2513
-  runSpeed: 4.7
-  walkSpeed: 1
+  runSpeed: 5.5
+  walkSpeed: 1.2
   canWalk: 1
   melee: 1
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 2
+  walkPointRange: 4
   canPatrol: 1
   timeBetweenAttacks: 1
   aggroDuration: 5
   forwardForce: 12
   upwardForce: 0
-  attackDelay: 0.5
+  attackDelay: 0.4
   meleDamage: 20
   spread: 0
   sightRange: 17

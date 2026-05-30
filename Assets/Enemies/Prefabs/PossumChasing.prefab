@@ -149,7 +149,7 @@ MonoBehaviour:
   canWalk: 1
   melee: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 2
+  walkPointRange: 4
   canPatrol: 1
   timeBetweenAttacks: 0.2
   aggroDuration: 5
