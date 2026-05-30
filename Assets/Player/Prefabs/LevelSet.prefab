@@ -346,6 +346,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: slideDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: dashDuration
       value: 0.15
       objectReference: {fileID: 0}
@@ -356,6 +360,10 @@ PrefabInstance:
     - target: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177894532774348872, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: m_TagString
+      value: Hitbox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
