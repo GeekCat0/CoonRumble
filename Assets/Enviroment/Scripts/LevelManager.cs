@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
     {
         foreach (EnemyAi enemy in enemies)
         {
+            enemy.StopAllCoroutines();
             enemy.gameObject.SetActive(true);
             enemy.gameObject.transform.position = enemy.GetSpawnPoint();
             enemy.ResetAgrro();

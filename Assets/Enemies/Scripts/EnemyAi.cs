@@ -7,7 +7,8 @@ public enum EnemyState
     Idling = 0,
     Patrolling = 1,
     Chasing = 2,
-    Attacking = 3
+    Attacking = 3,
+    Stunned = 4
 }
 
 public class EnemyAi : MonoBehaviour
@@ -30,6 +31,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private bool canWalk;
     [SerializeField] private bool melee;
+    [SerializeField] private float maxVelocityToRecover;
 
     [Header("Patrolling stats")]
     [SerializeField] private Vector3 walkPoint;
@@ -54,7 +56,8 @@ public class EnemyAi : MonoBehaviour
     private bool playerInAttackRange = false;
     private bool gotAttacked = false;
     private Vector3 spawnPoint;
-
+    private Rigidbody rb;
+    private bool stunned = false;
 
     private void Start()
     {
@@ -64,6 +67,7 @@ public class EnemyAi : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         healthScript = GetComponent<Health>();
         agent.speed = walkSpeed;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -71,24 +75,26 @@ public class EnemyAi : MonoBehaviour
         transform.LookAt(playerLocation);
         HandleEnemyState();
         HandleAgrro();
-
-        switch (enemyState)
+        if (!stunned)
         {
-            case EnemyState.Idling:
-                Idling(); 
-                break;
+            switch (enemyState)
+            {
+                case EnemyState.Idling:
+                    Idling();
+                    break;
 
-            case EnemyState.Patrolling:
-                Patroling(); 
-                break;
+                case EnemyState.Patrolling:
+                    Patroling();
+                    break;
 
-            case EnemyState.Chasing:
-                ChasePlayer(); 
-                break;
+                case EnemyState.Chasing:
+                    ChasePlayer();
+                    break;
 
-            case EnemyState.Attacking:
-                StartCoroutine(AttackPlayer());
-                break;
+                case EnemyState.Attacking:
+                    StartCoroutine(AttackPlayer());
+                    break;
+            }
         }
     }
 
@@ -116,7 +122,9 @@ public class EnemyAi : MonoBehaviour
     {
         // Just chilling
         if (canWalk)
-        agent.SetDestination(transform.position);
+        {
+            agent.SetDestination(transform.position);
+        }
     }
     private void Patroling()
     {
@@ -150,13 +158,13 @@ public class EnemyAi : MonoBehaviour
     }
     private IEnumerator AttackPlayer()
     {
-        transform.LookAt(playerLocation);
 
         if (!alreadyAttacked)
         {
             if (!melee)
             {
-                agent.SetDestination(transform.position);
+                if (canWalk)
+                    agent.SetDestination(transform.position);
                 bool isHit = Physics.Raycast(transform.position, playerLocation.position - transform.position, out RaycastHit hit, attackRange, rayLayerMask, QueryTriggerInteraction.Ignore);
                 alreadyAttacked = true;
 
@@ -188,7 +196,29 @@ public class EnemyAi : MonoBehaviour
         }
         yield return null;
     }
+    public IEnumerator GetKnockedBack(Vector3 force)
+    {
+        stunned = true;
+        enemyState = EnemyState.Idling;
 
+        agent.enabled = false;
+        rb.useGravity = true;
+        rb.isKinematic = false;
+        rb.AddForce(force, ForceMode.Impulse);
+
+        yield return new WaitForFixedUpdate();
+        yield return new WaitUntil(() => rb.linearVelocity.magnitude < maxVelocityToRecover);
+
+        rb.linearVelocity = Vector3.zero;
+        rb.useGravity = false;
+        rb.isKinematic = true;
+
+        agent.Warp(transform.position);
+        agent.enabled = true;
+        stunned = false;
+
+        yield return null;
+    }
     public void HandleAgrro()
     {
         if (healthScript.tookDamage)
@@ -201,10 +231,17 @@ public class EnemyAi : MonoBehaviour
     }
     public void ResetAgrro()
     {
+        stunned = false;
         alreadyAttacked = false;
         gotAttacked = false;
         enemyState = EnemyState.Idling;
         StopAllCoroutines();
+        rb.useGravity = false;
+        rb.isKinematic = true;
+        agent.enabled = true;
+        agent.Warp(transform.position);
+        if (canWalk)
+            agent.SetDestination(transform.position);
     }
 
     private void OnDrawGizmosSelected()

@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 1461470146733414443}
   - component: {fileID: 1623157228966214782}
   - component: {fileID: 739921022492792860}
+  - component: {fileID: 3900065160276858142}
   - component: {fileID: 5279635097694326268}
   - component: {fileID: 2484750292833329490}
   - component: {fileID: 2199378056780239409}
@@ -330,6 +331,7 @@ MonoBehaviour:
   walkSpeed: 1.2
   canWalk: 1
   melee: 1
+  maxVelocityToRecover: 0.1
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 4
   canPatrol: 1
@@ -383,6 +385,33 @@ MonoBehaviour:
   healthText: {fileID: 0}
   isPlayer: 0
   tookDamage: 0
+--- !u!54 &3900065160276858142
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4334160102045438014}
+  serializedVersion: 5
+  m_Mass: 40
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &5279635097694326268
 MonoBehaviour:
   m_ObjectHideFlags: 0

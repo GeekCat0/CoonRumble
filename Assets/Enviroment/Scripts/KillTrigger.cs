@@ -15,5 +15,9 @@ public class KillTrigger : MonoBehaviour
         {
             levelManager.LoadCheckpoint();
         }
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Health>().Delay();
+        }
     }
 }

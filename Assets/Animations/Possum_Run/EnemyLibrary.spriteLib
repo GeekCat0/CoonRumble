@@ -59,6 +59,37 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 1388929621, guid: 2f0527d620525d843aea4616d232acb4, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 8
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Possum_Idle_0
+      m_Hash: 573741091
+      m_Sprite: {fileID: -126290977, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -126290977, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+    - m_Name: Possum_Idle_1
+      m_Hash: 355838133
+      m_Sprite: {fileID: 205328073, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 205328073, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+    - m_Name: Possum_Idle_2
+      m_Hash: 205322511
+      m_Sprite: {fileID: 1570039163, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1570039163, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+    - m_Name: Possum_Idle_3
+      m_Hash: 993773977
+      m_Sprite: {fileID: 1664536439, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1664536439, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+    - m_Name: Possum_Idle_4
+      m_Hash: 627006522
+      m_Sprite: {fileID: 81183293, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 81183293, guid: 4b4a92dafbd56244dbd8d5f6637c418e, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639154361278024228
+  m_ModificationHash: 639157859318363796
   m_Version: 1

@@ -10,6 +10,7 @@ public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMap
     public bool AttackPressed { get; private set; }
     public float AttackHeld { get; private set; }
     public int WeaponNumber { get; private set; } = 0;
+    public bool MelePressed { get; private set;  }
 
     private void OnEnable()
     {
@@ -28,6 +29,7 @@ public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMap
     private void LateUpdate()
     {
         AttackPressed = false;
+        MelePressed = false;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -57,5 +59,12 @@ public class PlayerActionsInput : MonoBehaviour, PlayerControls.IPlayerActionMap
         if (!context.performed)
             return;
         WeaponNumber = 2;
+    }
+
+    public void OnMeleAttack(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        MelePressed |= true;
     }
 }

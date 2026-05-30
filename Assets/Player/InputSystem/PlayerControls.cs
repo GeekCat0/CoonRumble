@@ -356,6 +356,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MeleAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c32f987-0295-4c19-ae3b-a52ea36d70aa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -402,6 +411,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchWeapon3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99ea8ffd-a65b-4ff1-8a39-24ce4f3428ee"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -421,6 +441,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActionMap_SwitchWeapon1 = m_PlayerActionMap.FindAction("SwitchWeapon1", throwIfNotFound: true);
         m_PlayerActionMap_SwitchWeapon2 = m_PlayerActionMap.FindAction("SwitchWeapon2", throwIfNotFound: true);
         m_PlayerActionMap_SwitchWeapon3 = m_PlayerActionMap.FindAction("SwitchWeapon3", throwIfNotFound: true);
+        m_PlayerActionMap_MeleAttack = m_PlayerActionMap.FindAction("MeleAttack", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -646,6 +667,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_SwitchWeapon1;
     private readonly InputAction m_PlayerActionMap_SwitchWeapon2;
     private readonly InputAction m_PlayerActionMap_SwitchWeapon3;
+    private readonly InputAction m_PlayerActionMap_MeleAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerActionMap".
     /// </summary>
@@ -673,6 +695,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerActionMap/SwitchWeapon3".
         /// </summary>
         public InputAction @SwitchWeapon3 => m_Wrapper.m_PlayerActionMap_SwitchWeapon3;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerActionMap/MeleAttack".
+        /// </summary>
+        public InputAction @MeleAttack => m_Wrapper.m_PlayerActionMap_MeleAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -711,6 +737,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwitchWeapon3.started += instance.OnSwitchWeapon3;
             @SwitchWeapon3.performed += instance.OnSwitchWeapon3;
             @SwitchWeapon3.canceled += instance.OnSwitchWeapon3;
+            @MeleAttack.started += instance.OnMeleAttack;
+            @MeleAttack.performed += instance.OnMeleAttack;
+            @MeleAttack.canceled += instance.OnMeleAttack;
         }
 
         /// <summary>
@@ -734,6 +763,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwitchWeapon3.started -= instance.OnSwitchWeapon3;
             @SwitchWeapon3.performed -= instance.OnSwitchWeapon3;
             @SwitchWeapon3.canceled -= instance.OnSwitchWeapon3;
+            @MeleAttack.started -= instance.OnMeleAttack;
+            @MeleAttack.performed -= instance.OnMeleAttack;
+            @MeleAttack.canceled -= instance.OnMeleAttack;
         }
 
         /// <summary>
@@ -845,5 +877,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSwitchWeapon3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MeleAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMeleAttack(InputAction.CallbackContext context);
     }
 }

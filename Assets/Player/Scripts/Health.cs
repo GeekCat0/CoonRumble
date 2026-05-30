@@ -27,10 +27,10 @@ public class Health : MonoBehaviour
         tookDamage = true;
         health -= damage;
 
-        if (canGetKilled && health <= 0)
+        if (!isPlayer && canGetKilled && health <= 0)
             Invoke(nameof(Delay), deathDelay);
 
-        if (isPlayer && health <= 0)
+        if (isPlayer && health <= 0 && canGetKilled)
         {
             levelManager.LoadCheckpoint();
             ResetHealth();
