@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1781625658, guid: 2f0527d620525d843aea4616d232acb4, type: 3}
+  m_Sprite: {fileID: 877959503, guid: 1767e1226355ba941b0fe2c61c167ae8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_CategoryHash: 1.0429618e-14
   m_labelHash: 6.4445252e-15
   m_SpriteKey: 0
-  m_SpriteHash: 220910986
+  m_SpriteHash: 24663473
 --- !u!95 &3952092447322813998
 Animator:
   serializedVersion: 7
