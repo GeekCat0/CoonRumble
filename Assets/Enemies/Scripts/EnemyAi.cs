@@ -23,6 +23,8 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private LayerMask rayLayerMask;
+    [SerializeField] private Animator anim;
+
     private Health healthScript;
     private PlayerControler playerControler;
 
@@ -80,18 +82,22 @@ public class EnemyAi : MonoBehaviour
             switch (enemyState)
             {
                 case EnemyState.Idling:
+                    anim.SetInteger("State", 0);
                     Idling();
                     break;
 
                 case EnemyState.Patrolling:
+                    anim.SetInteger("State", 1);
                     Patroling();
                     break;
 
                 case EnemyState.Chasing:
+                    anim.SetInteger("State", 1);
                     ChasePlayer();
                     break;
 
                 case EnemyState.Attacking:
+                    anim.SetInteger("State", 2);
                     StartCoroutine(AttackPlayer());
                     break;
             }

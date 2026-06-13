@@ -463,8 +463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f75d904f99fcc84e852aabbc17d3aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleWeapons
-  meleForce: 5
+  meleForce: 150
   meleDamage: 20
+  meleDelay: 1
+  hitMarker: {fileID: 4990836319486026811}
 --- !u!65 &3203527111186912929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -484,8 +486,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.00656, y: 3.684515, z: 2.6536453}
-  m_Center: {x: 0.031326056, y: 0.25956964, z: 1.3255857}
+  m_Size: {x: 1, y: 1, z: 1.3771802}
+  m_Center: {x: 0, y: 0, z: 0.6885901}
 --- !u!1001 &301242648504773837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -564,11 +566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: dashDuration
-      value: 0.15
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: maxDashSpeed
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_Name

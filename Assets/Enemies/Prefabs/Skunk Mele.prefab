@@ -327,6 +327,7 @@ MonoBehaviour:
   rayLayerMask:
     serializedVersion: 2
     m_Bits: 2513
+  anim: {fileID: 2199378056780239409}
   runSpeed: 5.5
   walkSpeed: 1.2
   canWalk: 1
@@ -384,6 +385,7 @@ MonoBehaviour:
   deathDelay: 0.05
   healthText: {fileID: 0}
   isPlayer: 0
+  anim: {fileID: 0}
   tookDamage: 0
 --- !u!54 &3900065160276858142
 Rigidbody:

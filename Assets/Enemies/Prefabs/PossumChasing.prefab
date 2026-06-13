@@ -145,6 +145,7 @@ MonoBehaviour:
   rayLayerMask:
     serializedVersion: 2
     m_Bits: 2513
+  anim: {fileID: 3952092447322813998}
   runSpeed: 3.7
   walkSpeed: 1
   canWalk: 1
@@ -181,7 +182,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 8.12
-  m_BaseOffset: 2.47
+  m_BaseOffset: 2.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4181981183083334847
@@ -199,9 +200,10 @@ MonoBehaviour:
   maxHealth: 80
   health: 40
   canGetKilled: 1
-  deathDelay: 0.05
+  deathDelay: 0.5
   healthText: {fileID: 0}
   isPlayer: 0
+  anim: {fileID: 3952092447322813998}
   tookDamage: 0
 --- !u!54 &8833429449952142654
 Rigidbody:
@@ -256,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 1.0429618e-14
-  m_labelHash: 6.4445252e-15
+  m_CategoryHash: 6.625045e-30
+  m_labelHash: 1.4160902e-18
   m_SpriteKey: 0
   m_SpriteHash: 24663473
 --- !u!95 &3952092447322813998

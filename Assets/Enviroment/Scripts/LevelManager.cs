@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
-        Application.targetFrameRate = 165;
+        Application.targetFrameRate = 60;
         pointsCounter.text = "Trash: " + freebies;
     }
 

@@ -70,6 +70,7 @@ public class PlayerControler : MonoBehaviour
     private float stepOffset;
     private float maxMovementSpeed = 4f;
     private bool dashOffCooldown = true;
+    private bool dashLastFrame = false;
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
     private RaycastHit lastRunnedWall;
@@ -144,7 +145,7 @@ public class PlayerControler : MonoBehaviour
     {
         bool isGrounded = playerState.InGroundedState();
 
-        if (isGrounded && playerState.CurrentPlayerActionState != PlayerActionState.Dashing)
+        if (isGrounded)
         {
             canJump = true;
             jumpTimer = 0f;
@@ -279,6 +280,11 @@ public class PlayerControler : MonoBehaviour
                 lastPlatformPos = movingPlatform.position;
             }
         }
+        if (playerState.CurrentPlayerActionState != PlayerActionState.Dashing && dashLastFrame)
+        {
+            newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), maxRunSpeed);
+            dashLastFrame = false;
+        }
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
     }
@@ -287,6 +293,7 @@ public class PlayerControler : MonoBehaviour
     {
         canJump = false;
         dashOffCooldown = false;
+        dashLastFrame = true;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
         maxMovementSpeed = maxDashSpeed;
         yield return new WaitForSeconds(dashDuration);
