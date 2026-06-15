@@ -63,4 +63,16 @@ public class Health : MonoBehaviour
         gameObject.SetActive(false);
         ResetHealth();
     }
+    public void addHealth(int amount)
+    {
+        if (health + amount >= maxHealth)
+        {
+            health = maxHealth;
+        }
+        else
+        {
+            health += amount;
+        }
+        healthText.text = "Health: " + health.ToString();
+    }
 }

@@ -340,7 +340,7 @@ MonoBehaviour:
   aggroDuration: 5
   forwardForce: 12
   upwardForce: 0
-  attackDelay: 0.4
+  attackDelay: 0.6
   meleDamage: 20
   spread: 0
   sightRange: 17
