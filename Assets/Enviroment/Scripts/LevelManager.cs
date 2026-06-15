@@ -58,6 +58,7 @@ public class LevelManager : MonoBehaviour
         characterController.gameObject.transform.position = currentCheckpoint.position;
         characterController.enabled = true;
         characterController.GetComponent<Health>().ResetHealth();
+        characterController.GetComponent<PlayerControler>().ResetVelocity();
         playerController.SetPlatform(null);
         playerController.SetObjectToFollow(null);
         ResetEnemies();

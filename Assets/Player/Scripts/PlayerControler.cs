@@ -17,6 +17,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float airDrag = 0.1f;
     [SerializeField] private float slideDrag = 0.1f;
     [SerializeField] private float movingTreshold = 0.01f;
+    [SerializeField] private float maxSpeedBonus = 10f;
 
     [Header("Air Settings")] // Variables for mid air movement/jumping
     [SerializeField] private float gravity = 25f;
@@ -81,6 +82,9 @@ public class PlayerControler : MonoBehaviour
     private Transform movingPlatform;
     private Vector3 lastPlatformPos;
     private bool leftPlatformLastFrame = false;
+    private float speedBonus = 0f;
+    private bool resetVelocity = false;
+    Vector3 velocityHolder = Vector3.zero;
 
     private PlayerMovementState lastMovementState = PlayerMovementState.Falling;
 
@@ -103,6 +107,7 @@ public class PlayerControler : MonoBehaviour
         UpdateMovementState(); 
         HandleVerticalMovement();
         HandleLateralMovement();
+        Debug.Log(characterController.velocity.magnitude);
     }
 
     private void UpdateMovementState() 
@@ -204,6 +209,7 @@ public class PlayerControler : MonoBehaviour
         // Handles dashing together with the method 
         if (playerLocomotionInput.DashPressed && dashOffCooldown && playerState.CurrentPlayerMovementState != PlayerMovementState.Grinding )
         {
+            velocityHolder = characterController.velocity;
             StartCoroutine(HandleDashing());
             newVelocity = newVelocity + movementDelta * dashForce;
         }
@@ -253,6 +259,7 @@ public class PlayerControler : MonoBehaviour
                 sliding = false;
                 maxMovementSpeed = maxRunSpeed;
             }
+            maxMovementSpeed += speedBonus;
         }
 
         newVelocity = (newVelocity.magnitude > drag * Time.deltaTime) ? newVelocity - currentDrag : Vector3.zero;
@@ -282,16 +289,31 @@ public class PlayerControler : MonoBehaviour
         }
         if (playerState.CurrentPlayerActionState != PlayerActionState.Dashing && dashLastFrame)
         {
-            newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), maxRunSpeed);
+            //newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), maxRunSpeed);
+            newVelocity = velocityHolder;
             dashLastFrame = false;
+        }
+        if (characterController.velocity.magnitude >= (maxRunSpeed * 0.9f + speedBonus) && speedBonus < maxSpeedBonus)
+        {
+            speedBonus += 1 * Time.deltaTime;
+        }
+        else if (speedBonus > 0)
+        {
+            speedBonus -= 100 * Time.deltaTime;
+        }
+        if (resetVelocity)
+        {
+            resetVelocity = false;
+            newVelocity = Vector3.zero;
+            speedBonus = 0;
         }
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
     }
 
+
     IEnumerator HandleDashing() // Mostly state logic and making sure the player is not stopped by their max run speed, time based so it's a Coroutine
     {
-        canJump = false;
         dashOffCooldown = false;
         dashLastFrame = true;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
@@ -301,9 +323,6 @@ public class PlayerControler : MonoBehaviour
         playerState.SetPlayerActionState(PlayerActionState.Idling);
         yield return new WaitForSeconds(dashCooldown);
         dashOffCooldown = true;
-
-        if (IsGrounded())
-            canJump = true;
     }
 
     private Vector3 HandleWallRunning(Vector3 movementDelta)
@@ -449,5 +468,9 @@ public class PlayerControler : MonoBehaviour
     public void LeavePlatform()
     { 
         leftPlatformLastFrame = true;
+    }
+    public void ResetVelocity()
+    {
+        resetVelocity = true;
     }
 }
