@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
     private float stepOffset;
     private float maxMovementSpeed = 4f;
     private bool dashOffCooldown = true;
-    private bool dashLastFrame = false;
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
     private RaycastHit lastRunnedWall;
@@ -420,7 +419,6 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Dash()
     {
         dashOffCooldown = false;
-        dashLastFrame = true;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
         maxMovementSpeed = maxDashSpeed;
         yield return new WaitForSeconds(dashDuration);
@@ -463,6 +461,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity = Vector3.ProjectOnPlane(velocity, normal);
         }
+
         if (playerState.CurrentPlayerMovementState == PlayerMovementState.Sliding)
         {
             if (!validAngle)
@@ -505,6 +504,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public Vector3 GetVelocity()
     {
+        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
+        {
+            return velocityHolder;
+        }
         return characterController.velocity;
     }
 }

@@ -104,10 +104,11 @@ public class PlayerControler : MonoBehaviour
 
     private void Update()   // Method names self explanatory xd, call those every frame as they contain all logic
     {
+        //Debug.Log(characterController.velocity.magnitude);
+        Debug.Log(speedBonus);
         UpdateMovementState(); 
         HandleVerticalMovement();
         HandleLateralMovement();
-        Debug.Log(characterController.velocity.magnitude);
     }
 
     private void UpdateMovementState() 
@@ -278,6 +279,7 @@ public class PlayerControler : MonoBehaviour
             Vector3 platformVelocity = (movingPlatform.position - lastPlatformPos);
             if (leftPlatformLastFrame && isGrounded)
             {
+                newVelocity += platformVelocity;
                 movingPlatform = null;
                 leftPlatformLastFrame = false;
             }
@@ -293,13 +295,13 @@ public class PlayerControler : MonoBehaviour
             newVelocity = velocityHolder;
             dashLastFrame = false;
         }
-        if (characterController.velocity.magnitude >= (maxRunSpeed * 0.9f + speedBonus) && speedBonus < maxSpeedBonus)
+        if (characterController.velocity.magnitude >= (maxRunSpeed * 0.8f + speedBonus))
         {
             speedBonus += 1 * Time.deltaTime;
         }
-        else if (speedBonus > 0)
+        else if (speedBonus > 0 && movingPlatform == null)
         {
-            speedBonus -= 100 * Time.deltaTime;
+            speedBonus -= 40 * Time.deltaTime;
         }
         if (resetVelocity)
         {
@@ -307,6 +309,7 @@ public class PlayerControler : MonoBehaviour
             newVelocity = Vector3.zero;
             speedBonus = 0;
         }
+        Mathf.Clamp(speedBonus, 0, maxSpeedBonus);
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
     }

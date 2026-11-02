@@ -500,6 +500,22 @@ PrefabInstance:
       propertyPath: speedLines
       value: 
       objectReference: {fileID: 4375459799251871266}
+    - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: maxFOVBonus
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: dashFOVBonus
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: speedForLines
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 6112103018043240728}
     - target: {fileID: 1692057558105486227, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: healthText
       value: 
@@ -637,6 +653,11 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+--- !u!20 &5890039391343598815 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6166453773364686866, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+  m_PrefabInstance: {fileID: 301242648504773837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6957352191145892044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
@@ -659,8 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d498cdc092f5b0749b0f92572b476ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  characterController: {fileID: 0}
-  playerCamera: {fileID: 0}
+  characterController: {fileID: 5567687461798822000}
+  playerCamera: {fileID: 5890039391343598815}
   groundLayers:
     serializedVersion: 2
     m_Bits: 128

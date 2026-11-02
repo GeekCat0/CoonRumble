@@ -10,16 +10,20 @@ public class CameraEffects : MonoBehaviour
     [Header("Dash Stats")]
     [SerializeField] private float baseFOV = 60;
     [SerializeField] private float dashFOVBonus = 10;
+    [SerializeField] private float maxFOVBonus = 20;
     [SerializeField] private float FOVChangeSpeed = 30;
     [Header("WallRun Stats")]
     [SerializeField] private float rotationAmount = 5;
     [SerializeField] private float rotationSpeed = 10;
     [SerializeField] GameObject speedLines;
     [SerializeField] float speedForLines = 10;
+    [SerializeField] float speedForMax = 15;
     [SerializeField] float minTimeForLines = 1;
     private float linesTimer = 0;
+    private float maxTimer = 0;
     private float targetRotation = 0;
     private bool speedy = false;
+    private float currentFOVBonus = 0;
 
 
 
@@ -52,7 +56,7 @@ public class CameraEffects : MonoBehaviour
     private void DashFOVChange()
     {
         if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing || speedy)
-            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV + dashFOVBonus, FOVChangeSpeed * Time.deltaTime);
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV + currentFOVBonus, FOVChangeSpeed * Time.deltaTime);
         else
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, baseFOV, FOVChangeSpeed * Time.deltaTime);
     }
@@ -64,17 +68,28 @@ public class CameraEffects : MonoBehaviour
         else
             linesTimer -= Time.deltaTime * 10;
 
+        if (playerMovement.GetVelocity().magnitude >= speedForMax)
+            maxTimer += Time.deltaTime * 10;
+        else
+            maxTimer -= Time.deltaTime * 10;
+
         linesTimer = Mathf.Clamp(linesTimer, 0.0f, minTimeForLines * 2);
+        maxTimer = Mathf.Clamp(maxTimer, 0.0f, minTimeForLines * 2);
 
         if (linesTimer >= minTimeForLines)
         {
             speedLines.SetActive(true);
             speedy = true;
+            currentFOVBonus = dashFOVBonus;
         }
         else
         {
             speedLines.SetActive(false);
             speedy = false;
+        }
+        if (maxTimer >= minTimeForLines)
+        {
+            currentFOVBonus = maxFOVBonus;
         }
 
     }

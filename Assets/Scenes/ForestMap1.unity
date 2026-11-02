@@ -856,7 +856,7 @@ MonoBehaviour:
   platform: {fileID: 745959727}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &56145926
 BoxCollider:
@@ -883,6 +883,11 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4419658796062556333, guid: 123dc5793a7396443bcbc42674d6f595, type: 3}
   m_PrefabInstance: {fileID: 1866896859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &73458809 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+  m_PrefabInstance: {fileID: 1709005585}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &75995232 stripped
 Transform:
@@ -3168,7 +3173,7 @@ MonoBehaviour:
   platform: {fileID: 957692180}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &339653703
 BoxCollider:
@@ -4474,7 +4479,7 @@ MonoBehaviour:
   platform: {fileID: 46512271}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &417625195
 BoxCollider:
@@ -4950,7 +4955,7 @@ MonoBehaviour:
   platform: {fileID: 80069401}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &463814214
 BoxCollider:
@@ -6386,7 +6391,7 @@ MonoBehaviour:
   platform: {fileID: 797156605}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &633891321
 BoxCollider:
@@ -9555,7 +9560,7 @@ MonoBehaviour:
   platform: {fileID: 1926988960}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &911396190
 BoxCollider:
@@ -11358,7 +11363,7 @@ MonoBehaviour:
   platform: {fileID: 1804124634}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &992489869
 BoxCollider:
@@ -11886,7 +11891,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 1029968146009387293, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_Name
@@ -11930,7 +11935,7 @@ PrefabInstance:
       objectReference: {fileID: 1318848190}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -88
+      value: 110.330025
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11938,11 +11943,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 111.93
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -11950,7 +11955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -13082,7 +13087,7 @@ MonoBehaviour:
   platform: {fileID: 1576738144}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1126422519
 BoxCollider:
@@ -13926,7 +13931,7 @@ MonoBehaviour:
   platform: {fileID: 950328396}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1219817936
 BoxCollider:
@@ -14314,6 +14319,11 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4419658796062556333, guid: 123dc5793a7396443bcbc42674d6f595, type: 3}
   m_PrefabInstance: {fileID: 940223880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1273818655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+  m_PrefabInstance: {fileID: 1342514671}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1278495392
 PrefabInstance:
@@ -15732,7 +15742,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 1029968146009387293, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_Name
@@ -15796,7 +15806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3854
+      value: 1.3853999
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalScale.y
@@ -15804,11 +15814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7091208
+      value: 0.70912075
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -198.58
+      value: -11.659971
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15816,11 +15826,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.06
+      value: 198.58003
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -15828,7 +15838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -16481,7 +16491,7 @@ MonoBehaviour:
   platform: {fileID: 1151767503}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1446646148
 BoxCollider:
@@ -17006,7 +17016,7 @@ MonoBehaviour:
   platform: {fileID: 1851812964}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1464639136
 BoxCollider:
@@ -17558,7 +17568,7 @@ MonoBehaviour:
   platform: {fileID: 1544607642}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1493448710
 BoxCollider:
@@ -18430,11 +18440,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 214282816550916711, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_Name
       value: MovingLog (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620055559717578944, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
+      propertyPath: speed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4711551872790670707, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18446,7 +18460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.1
+      value: 65.33001
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18454,23 +18468,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 66.93
+      value: 17.099998
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18708,7 +18722,7 @@ MonoBehaviour:
   platform: {fileID: 790361143}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1586700960
 BoxCollider:
@@ -19194,7 +19208,7 @@ MonoBehaviour:
   platform: {fileID: 1253729089}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1609057523
 BoxCollider:
@@ -20285,7 +20299,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 1029968146009387293, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_Name
@@ -20337,7 +20351,7 @@ PrefabInstance:
       objectReference: {fileID: 1182996631}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.14
+      value: 111.860016
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20345,11 +20359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 113.46
+      value: 34.139984
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -20357,7 +20371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -21161,8 +21175,8 @@ Transform:
   m_GameObject: {fileID: 1730589875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 1.6}
+  m_LocalScale: {x: 1.2298, y: 1.2298, z: 1.2298}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1907108083}
@@ -21185,6 +21199,13 @@ Transform:
   - {fileID: 788964761}
   - {fileID: 1894477157}
   - {fileID: 1012428042}
+  - {fileID: 1362807487}
+  - {fileID: 1713345695}
+  - {fileID: 855611197}
+  - {fileID: 73458809}
+  - {fileID: 1882770461}
+  - {fileID: 365377143}
+  - {fileID: 1273818655}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1739538907
@@ -21604,7 +21625,7 @@ MonoBehaviour:
   platform: {fileID: 403250978}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1749285982
 BoxCollider:
@@ -21874,7 +21895,7 @@ MonoBehaviour:
   platform: {fileID: 390584265}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1775216517
 BoxCollider:
@@ -23081,7 +23102,7 @@ MonoBehaviour:
   platform: {fileID: 1141014188}
   pointA: {fileID: 1137079493}
   pointB: {fileID: 795654890}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &1853209985
 BoxCollider:
@@ -23424,7 +23445,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 59b14ccc4cd7a5345b5a65e6866a4a3a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 89ba138e80d248241ab43df4b67c91f6, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1909168448
 PrefabInstance:
@@ -24242,7 +24263,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 1029968146009387293, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_Name
@@ -24298,7 +24319,7 @@ PrefabInstance:
       objectReference: {fileID: 1504433654}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -102.36
+      value: -2.6599848
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24306,11 +24327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.06
+      value: 102.360016
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -24318,7 +24339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -25275,11 +25296,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 214282816550916711, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_Name
       value: MovingLog
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620055559717578944, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
+      propertyPath: speed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4711551872790670707, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25299,7 +25324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.69
+      value: 39.430004
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25307,23 +25332,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.03
+      value: 3.6899986
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8045060385226667574, guid: 3c8f05f235a792846bd66c17d0776898, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -25420,7 +25445,7 @@ MonoBehaviour:
   platform: {fileID: 1283374459}
   pointA: {fileID: 844354373}
   pointB: {fileID: 302584287}
-  speed: 4
+  speed: 6
   teleporting: 1
 --- !u!65 &2120761874
 BoxCollider:
@@ -25773,7 +25798,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1730589876}
     m_Modifications:
     - target: {fileID: 1029968146009387293, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_Name
@@ -25845,7 +25870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.89000034
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25853,11 +25878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4900002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -25865,7 +25890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8552898257478004179, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -25958,13 +25983,6 @@ SceneRoots:
   - {fileID: 6279494665902164798}
   - {fileID: 380026238}
   - {fileID: 1730589876}
-  - {fileID: 7353831041944542805}
-  - {fileID: 1709005585}
-  - {fileID: 1067189550}
-  - {fileID: 1999267158}
-  - {fileID: 1342514671}
-  - {fileID: 2120290472}
-  - {fileID: 1563482405}
   - {fileID: 922254735}
   - {fileID: 684586033}
   - {fileID: 241267457}
