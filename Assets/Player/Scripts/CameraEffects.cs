@@ -5,7 +5,7 @@ public class CameraEffects : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Camera playerCam;
     [SerializeField] private PlayerState playerState;
-    [SerializeField] private PlayerControler playerControler;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Transform camTransform;
     [Header("Dash Stats")]
     [SerializeField] private float baseFOV = 60;
@@ -36,7 +36,7 @@ public class CameraEffects : MonoBehaviour
 
         if (playerState.CurrentPlayerMovementState == PlayerMovementState.WallRunning)
         {
-            if (playerControler.wallRight)
+            if (playerMovement.wallRight)
             {
                 targetRotation = rotationAmount;
             }
@@ -59,7 +59,7 @@ public class CameraEffects : MonoBehaviour
 
     private void SpeedLines()
     {
-        if (playerControler.GetVelocity().magnitude >= speedForLines || playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding)
+        if (playerMovement.GetVelocity().magnitude >= speedForLines || playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding)
             linesTimer += Time.deltaTime * 10;
         else
             linesTimer -= Time.deltaTime * 10;

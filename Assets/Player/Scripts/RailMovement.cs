@@ -20,13 +20,13 @@ public class RailMovement : MonoBehaviour
     private float calculatedSpeed = 1f;
 
     private PlayerLocomotionInput playerLocomotionInput;
-    private PlayerControler playerControler;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
         playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
         playerState = GetComponent<PlayerState>();
-        playerControler = GetComponent<PlayerControler>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -64,19 +64,22 @@ public class RailMovement : MonoBehaviour
             if (playerLocomotionInput.JumpPressed)
             {
                 Invoke(nameof(cooldown), 0.5f);
-                playerControler.SetObjectToFollow(null);
+                playerMovement.SetObjectToFollow(null);
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
-                playerControler.Jump(jumpLaunchForce);
+                playerMovement.Jump(jumpLaunchForce);
+                //playerMovement.Jump(jumpLaunchForce);
                 yield break;
             }
             animatedObj.NormalizedTime += (Time.deltaTime * calculatedSpeed * direction);
-            playerControler.SetObjectToFollow(animatedObj.transform);
+            playerMovement.SetObjectToFollow(animatedObj.transform);
             yield return null;
         }
         Invoke(nameof(cooldown), 0.5f);
-        playerControler.SetObjectToFollow(null);
+        playerMovement.SetObjectToFollow(null);
         playerState.SetPlayerMovementState(PlayerMovementState.Idling);
-        playerControler.Jump(endLaunchForce);
+        //playerMovement.Jump(endLaunchForce);
+        playerMovement.GiveForceToPlayer(animatedObj.transform.forward * direction * endLaunchForce);
+        playerMovement.Jump(jumpLaunchForce);
     }
 
     private void cooldown()

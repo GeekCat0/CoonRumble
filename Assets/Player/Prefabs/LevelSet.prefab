@@ -584,7 +584,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hitbox
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7919962399380564176, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3283241424152896836, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
@@ -597,6 +598,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2786415564749301599}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6112103018043240728}
     - targetCorrespondingSourceObject: {fileID: 5377916086989134073, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4213443477676973308}
@@ -638,6 +642,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
   m_PrefabInstance: {fileID: 301242648504773837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8559547741343438213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+  m_PrefabInstance: {fileID: 301242648504773837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6112103018043240728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559547741343438213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d498cdc092f5b0749b0f92572b476ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  characterController: {fileID: 0}
+  playerCamera: {fileID: 0}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  runAcceleration: 35
+  maxRunSpeed: 6
+  drag: 20
+  slideDrag: 5
+  movingTreshold: 0.01
+  maxSpeedBonus: 4
+  gravity: 20
+  jumpSpeed: 0.7
+  inAirAcceleration: 20
+  terminalVelocity: 50
+  jumpLockDelay: 0.1
+  dashForce: 60
+  dashDuration: 0.2
+  dashCooldown: 0.5
+  maxDashSpeed: 30
+  wallCheckDistance: 0.5
+  forwardJumpForce: 0.05
+  sideJumpForce: 0.4
+  upJumpForce: 0.5
+  wallStartBoost: 4
+  maxWallRunSpeed: 6
+  lookSenseH: 0.1
+  lookSenseV: 0.1
+  lookLimitV: 89
+  slideBoost: 1.5
+  minSpeedForSlide: 0.5
+  crouchSpeed: 0.8
+  crouchingHeight: 0.3
+  maxSlideSpeed: 12
 --- !u!1001 &6613901436786369052
 PrefabInstance:
   m_ObjectHideFlags: 0
