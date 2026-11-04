@@ -55,9 +55,10 @@ public class ProjectileWeapons : MonoBehaviour
         // Check if ray hit anything
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask) && weaponData.adaptiveAim)
-            targetPoint = hit.point;
+            targetPoint = hit.point; 
         else
             targetPoint = ray.GetPoint(50);
+
 
         // Calculate direction from attackPoint to targetPoint
         Vector3 directionWithoutSpread = targetPoint - attackPoint.position;

@@ -259,6 +259,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(float force)
     {
+        playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
         verticalVelocity = Mathf.Sqrt(jumpSpeed * 3 * gravity * force);
         jumpedLastFrame = true;
     }
@@ -445,9 +446,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void SpeedBonus()
     {
-        if (characterController.velocity.magnitude >= (maxRunSpeed * 0.8f + speedBonus) && speedBonus < maxSpeedBonus)
+        if (characterController.velocity.magnitude >= (maxRunSpeed * 0.7f + speedBonus) && speedBonus < maxSpeedBonus)
         {
-            speedBonus += 0.2f * Time.deltaTime;
+            speedBonus += 0.5f * Time.deltaTime;
         }
         else if (speedBonus > 0)
         {

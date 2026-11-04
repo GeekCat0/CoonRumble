@@ -112,7 +112,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   canPatrol: 0
-  timeBetweenAttacks: 0.25
+  timeBetweenAttacks: 1
   aggroDuration: 5
   forwardForce: 8
   upwardForce: 0

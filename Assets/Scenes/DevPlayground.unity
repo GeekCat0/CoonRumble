@@ -5676,41 +5676,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1115605831791464166, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: m_Size.y
-      value: 0.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 1115605831791464166, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: m_Size.z
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1115605831791464166, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1115605831791464166, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: m_Center.z
-      value: 0.23
-      objectReference: {fileID: 0}
     - target: {fileID: 1818889958218131600, guid: d4d41c170497589478eaf98a3005627a, type: 3}
       propertyPath: m_Name
       value: LevelSet
       objectReference: {fileID: 0}
-    - target: {fileID: 1965293152870609421, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: jumpForce
-      value: 2.5
+    - target: {fileID: 2383579638828889485, guid: d4d41c170497589478eaf98a3005627a, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1965293152870609421, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: bounceForce
-      value: 1
+    - target: {fileID: 2383579638828889485, guid: d4d41c170497589478eaf98a3005627a, type: 3}
+      propertyPath: endLaunchForce
+      value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 2582058400213582153, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421224728977475503, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+    - target: {fileID: 2383579638828889485, guid: d4d41c170497589478eaf98a3005627a, type: 3}
+      propertyPath: jumpLaunchForce
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5422084554715543950, guid: d4d41c170497589478eaf98a3005627a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5752,21 +5732,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6112103018043240728, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: jumpSpeed
-      value: 0.7
+    - target: {fileID: 5811368187617274811, guid: d4d41c170497589478eaf98a3005627a, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811368187617274811, guid: d4d41c170497589478eaf98a3005627a, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6112103018043240728, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: dashDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6112103018043240728, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: maxDashSpeed
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6112103018043240728, guid: d4d41c170497589478eaf98a3005627a, type: 3}
-      propertyPath: maxSpeedBonus
-      value: 6
+      propertyPath: wallStartBoost
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7093,7 +7069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7252759856454124327, guid: 17e4c5fbc15b54a499b85e5226415b58, type: 3}
       propertyPath: force
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
