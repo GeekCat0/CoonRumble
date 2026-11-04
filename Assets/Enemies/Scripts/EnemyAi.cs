@@ -26,7 +26,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private Animator anim;
 
     private Health healthScript;
-    private PlayerControler playerControler;
+    private PlayerMovement playerMovement;
 
     [Header("Basic Stats")]
     [SerializeField] private float runSpeed;
@@ -64,8 +64,8 @@ public class EnemyAi : MonoBehaviour
     private void Start()
     {
         spawnPoint = transform.position;
-        playerLocation = FindAnyObjectByType<PlayerControler>().transform;
-        playerControler = FindAnyObjectByType<PlayerControler>();
+        playerLocation = FindAnyObjectByType<PlayerMovement>().transform;
+        playerMovement = FindAnyObjectByType<PlayerMovement>();
         agent = GetComponent<NavMeshAgent>();
         healthScript = GetComponent<Health>();
         agent.speed = walkSpeed;
@@ -193,7 +193,7 @@ public class EnemyAi : MonoBehaviour
                 agent.SetDestination(transform.position);
                 if (playerInAttackRange)
                 {
-                    playerControler.GetComponent<Health>().TakeDamage(meleDamage);
+                    playerMovement.GetComponent<Health>().TakeDamage(meleDamage);
                     Debug.Log("mele");
                 }
             }

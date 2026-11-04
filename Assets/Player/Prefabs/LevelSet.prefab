@@ -1,5 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &902697508761925601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3421224728977475503}
+  - component: {fileID: 1115605831791464166}
+  - component: {fileID: 1965293152870609421}
+  m_Layer: 0
+  m_Name: DashAttack
+  m_TagString: Test
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3421224728977475503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902697508761925601}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3007929809845619081}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1115605831791464166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902697508761925601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 31735
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.43, z: 0.6}
+  m_Center: {x: 0, y: 0, z: 0.23}
+--- !u!114 &1965293152870609421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902697508761925601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ec7824e109dbe459d3d1d2a27489b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DashAttack
+  enemyTag: Enemy
+  damage: 100
+  jumpForce: 2.5
 --- !u!1 &1139615001221687355
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,12 +574,16 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: speedForMax
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: dashFOVBonus
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: speedForLines
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1058921156001553997, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: playerMovement
@@ -613,6 +686,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3283241424152896836, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2786415564749301599}
+    - targetCorrespondingSourceObject: {fileID: 3283241424152896836, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3421224728977475503}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8279768708685429064, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       insertIndex: -1
@@ -693,22 +769,24 @@ MonoBehaviour:
   drag: 20
   slideDrag: 5
   movingTreshold: 0.01
-  maxSpeedBonus: 4
+  maxSpeedBonus: 6
   gravity: 20
   jumpSpeed: 0.7
   inAirAcceleration: 20
   terminalVelocity: 50
   jumpLockDelay: 0.1
-  dashForce: 60
-  dashDuration: 0.2
-  dashCooldown: 0.5
-  maxDashSpeed: 30
+  dashForce: 50
+  dashDuration: 0.3
+  dashCooldown: 0.6
+  maxDashSpeed: 18
   wallCheckDistance: 0.5
   forwardJumpForce: 0.05
   sideJumpForce: 0.4
   upJumpForce: 0.5
-  wallStartBoost: 4
-  maxWallRunSpeed: 6
+  wallStartBoost: 2
+  maxWallRunSpeed: 7
+  wallRunGravityUp: 0.6
+  wallRunGravityDown: 0.4
   lookSenseH: 0.1
   lookSenseV: 0.1
   lookLimitV: 89

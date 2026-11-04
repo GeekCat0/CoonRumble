@@ -67,7 +67,7 @@ public class RailMovement : MonoBehaviour
                 playerMovement.SetObjectToFollow(null);
                 playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
                 playerMovement.Jump(jumpLaunchForce);
-                //playerMovement.Jump(jumpLaunchForce);
+
                 yield break;
             }
             animatedObj.NormalizedTime += (Time.deltaTime * calculatedSpeed * direction);
@@ -77,7 +77,7 @@ public class RailMovement : MonoBehaviour
         Invoke(nameof(cooldown), 0.5f);
         playerMovement.SetObjectToFollow(null);
         playerState.SetPlayerMovementState(PlayerMovementState.Idling);
-        //playerMovement.Jump(endLaunchForce);
+
         playerMovement.GiveForceToPlayer(animatedObj.transform.forward * direction * endLaunchForce);
         playerMovement.Jump(jumpLaunchForce);
     }

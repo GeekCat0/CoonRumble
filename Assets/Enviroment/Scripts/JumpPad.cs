@@ -7,7 +7,7 @@ public class JumpPad : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerMovement>().Jump(other.GetComponent<PlayerMovement>().GetVelocity().magnitude * force);
+            other.GetComponent<PlayerMovement>().Jump(other.GetComponent<PlayerMovement>().GetVelocity().magnitude * force * 0.01f);
 
         }
     }

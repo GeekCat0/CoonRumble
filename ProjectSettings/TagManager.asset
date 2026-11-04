@@ -8,6 +8,7 @@ TagManager:
   - Rail
   - Hitmarker
   - Hitbox
+  - Test
   layers:
   - Default
   - TransparentFX

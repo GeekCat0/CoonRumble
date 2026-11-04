@@ -101,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-
         Setter();
         StateMachine();
         switch (playerState.CurrentPlayerMovementState)
@@ -218,13 +217,11 @@ public class PlayerMovement : MonoBehaviour
             lateralAcceleration = inAirAcceleration;
         }
 
-
         if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
             maxMovementSpeed = maxDashSpeed;
 
         HandleVerticalMovement();
         verticalVelocity -= gravity * Time.deltaTime;
-        // Choose how fast the player can accelerate based on if they're on the ground or mid air
 
         // Calculate velocity and movement direction based on camera 
         Vector3 cameraForwardXZ = new Vector3(playerCamera.transform.forward.x, 0f, playerCamera.transform.forward.z).normalized;
@@ -233,13 +230,14 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movementDelta = movementDirection * lateralAcceleration * Time.deltaTime;
 
 
-        Vector3 newVelocity = characterController.velocity + movementDelta + bonusForces;
+        Vector3 newVelocity = characterController.velocity + movementDelta;
 
         if (playerLocomotionInput.DashPressed && dashOffCooldown)
         {
             velocityHolder = characterController.velocity;
             StartCoroutine(Dash());
-            newVelocity = newVelocity + movementDelta * dashForce;
+            newVelocity += movementDirection.normalized * dashForce;
+            verticalVelocity = verticalVelocity + playerCamera.transform.forward.y * dashForce * 0.1f;
         }
 
         // Add drag to player
@@ -261,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(float force)
     {
-        verticalVelocity += Mathf.Sqrt(jumpSpeed * 3 * gravity * force);
+        verticalVelocity = Mathf.Sqrt(jumpSpeed * 3 * gravity * force);
         jumpedLastFrame = true;
     }
     private void HandleVerticalMovement()
@@ -439,15 +437,21 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         dashOffCooldown = true;
     }
+    public void StopDash()
+    {
+        StopCoroutine(Dash());
+        playerState.SetPlayerActionState(PlayerActionState.Idling);
+        dashOffCooldown = true;
+    }
     private void SpeedBonus()
     {
         if (characterController.velocity.magnitude >= (maxRunSpeed * 0.8f + speedBonus) && speedBonus < maxSpeedBonus)
         {
-            speedBonus += 0.5f * Time.deltaTime;
+            speedBonus += 0.2f * Time.deltaTime;
         }
         else if (speedBonus > 0)
         {
-            speedBonus -= 10 * Time.deltaTime;
+            speedBonus -= 5 * Time.deltaTime;
         }
         if (speedBonus < 0)
             speedBonus = 0;
@@ -456,9 +460,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void GiveForceToPlayer(Vector3 force)
     {
-        bonusForces.x = Mathf.Sqrt( 3 * gravity * force.x);
-        bonusForces.y = Mathf.Sqrt( 3 * gravity * force.y);
-        bonusForces.z = Mathf.Sqrt( 3 * gravity * force.z);
+        bonusForces = force; 
     }
     private Vector3 HandleSteepWalls(Vector3 velocity, float slopeLimit) // This is preventing the player from being able to climb too steep walls by jumping by making them slide off
     {
@@ -546,7 +548,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - characterController.radius, transform.position.z);
 
         bool grounded = Physics.CheckSphere(spherePosition, characterController.radius, groundLayers, QueryTriggerInteraction.Ignore);
-        //bool grounded = Physics.Raycast(spherePosition, Vector3.down, characterController.height / 2f, groundLayers);
 
         return grounded;
     }
@@ -557,8 +558,6 @@ public class PlayerMovement : MonoBehaviour
         float angle = Vector3.Angle(normal, Vector3.up);
         bool validAngle = angle <= characterController.slopeLimit;
 
-        // CharacterController.isGrounded can be true when touching a very steep wall.
-        // Do not let that contact turn into a grounded state.
         if (TryGetSteepWallNormal(characterController.slopeLimit, out _))
             validAngle = false;
 
