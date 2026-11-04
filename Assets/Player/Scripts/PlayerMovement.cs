@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float upJumpForce = 3.0f;
     [SerializeField] private float wallStartBoost = 1f;
     [SerializeField] private float maxWallRunSpeed = 4f;
+    [SerializeField] private float wallRunGravityUp = 1f;
+    [SerializeField] private float wallRunGravityDown = 1f;
 
     [Header("Camera Settings")] // Variables for camera control
     public float lookSenseH = 0.1f;
@@ -98,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+
         Setter();
         StateMachine();
         switch (playerState.CurrentPlayerMovementState)
@@ -115,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
                 BasicMovement();
                 break;
         }
+
         if (playerState.CurrentPlayerMovementState == PlayerMovementState.Sliding)
             transform.localScale = new Vector3(0.8f, crouchingHeight, 0.8f);
         else
@@ -170,8 +175,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerState.SetPlayerMovementState(PlayerMovementState.Falling);
             startedWallRun = false;
-            Debug.Log(startedWallRun);
         }
+
 
         // Control Ground State
         bool isMovementInput = playerLocomotionInput.MovementInput != Vector2.zero;
@@ -180,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerMovementState lateralState = isMovingLaterally || isMovementInput ? PlayerMovementState.Running : PlayerMovementState.Idling;
         lateralState = playerLocomotionInput.SlideHeld && isGrounded ? PlayerMovementState.Sliding : lateralState;
 
-        playerState.SetPlayerMovementState(lateralState);
+        if ( isGrounded ) playerState.SetPlayerMovementState(lateralState);
 
         // Control Airborn State
         if ((!isGrounded || jumpedLastFrame) && characterController.velocity.y > 0f)
@@ -192,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         else if ((!isGrounded || jumpedLastFrame) && characterController.velocity.y <= 0f)
         {
             playerState.SetPlayerMovementState(PlayerMovementState.Falling);
-            jumpedLastFrame = false;
+            jumpedLastFrame = false; 
             characterController.stepOffset = 0f;
         }
         else
@@ -302,7 +307,12 @@ public class PlayerMovement : MonoBehaviour
             maxMovementSpeed = maxDashSpeed;
 
         HandleVerticalMovement();
-        verticalVelocity -= gravity/3 * Time.deltaTime;
+
+        if ( verticalVelocity >= 0f )
+            verticalVelocity -= gravity * wallRunGravityUp * Time.deltaTime;
+        else
+            verticalVelocity -= gravity * wallRunGravityDown * Time.deltaTime;
+
         // Choose how fast the player can accelerate based on if they're on the ground or mid air
         float lateralAcceleration = runAcceleration;
 
@@ -335,8 +345,10 @@ public class PlayerMovement : MonoBehaviour
                 movementDelta += wallNormal * Mathf.Sqrt(sideJumpForce * 3 * gravity);
                 movementDelta += wallForwardDirection * Mathf.Sqrt(forwardJumpForce * 3 * gravity);
             }
-            else 
-                movementDelta = wallForwardDirection * runAcceleration * Time.deltaTime + wallNormal * -1; // moves the player along a wall and applies a slight force to also stick to it better
+            else if (lastMovementState != PlayerMovementState.WallRunning)
+                movementDelta = wallForwardDirection * runAcceleration * Time.deltaTime + wallNormal * -0.01f; // moves the player along a wall and applies a slight force to also stick to it better (only if it's right after starting to wallrun)
+            else
+                movementDelta = wallForwardDirection * runAcceleration; 
         }
         Vector3 newVelocity = characterController.velocity + movementDelta;
 
@@ -447,19 +459,34 @@ public class PlayerMovement : MonoBehaviour
         bonusForces.x = Mathf.Sqrt( 3 * gravity * force.x);
         bonusForces.y = Mathf.Sqrt( 3 * gravity * force.y);
         bonusForces.z = Mathf.Sqrt( 3 * gravity * force.z);
-        Debug.Log(bonusForces.ToString());
     }
     private Vector3 HandleSteepWalls(Vector3 velocity, float slopeLimit) // This is preventing the player from being able to climb too steep walls by jumping by making them slide off
     {
         // Here we check if the angle on which the player is standing is not too steep
         Vector3 normal = CharacterControllerUtils.GetNormalWithSphereCast(characterController, groundLayers);
         float angle = Vector3.Angle(normal, Vector3.up);
+
+        // if normal check does not detect anything
+        if (TryGetSteepWallNormal(slopeLimit, out Vector3 wallNormal))
+        {
+            normal = wallNormal;
+            angle = Vector3.Angle(normal, Vector3.up);
+        }
+
         bool validAngle = angle <= slopeLimit;
 
         // If the player just fell on a too steep wall, we change the velocity so that they are falling towards the direction the slope is pointing instead of going straight down
         if (!validAngle && verticalVelocity <= 0f && playerState.CurrentPlayerMovementState != PlayerMovementState.Sliding)
         {
             velocity = Vector3.ProjectOnPlane(velocity, normal);
+
+            // Add a small outward force to prevent the CharacterController from sticking.
+            Vector3 outwardDirection = Vector3.ProjectOnPlane(normal, Vector3.up).normalized;
+            if (outwardDirection.sqrMagnitude > 0f)
+            {
+                float steepness = Mathf.InverseLerp(slopeLimit, 90f, angle);
+                velocity += outwardDirection * gravity * Mathf.Lerp(0.5f, 1f, steepness) * Time.deltaTime;
+            }
         }
 
         if (playerState.CurrentPlayerMovementState == PlayerMovementState.Sliding)
@@ -471,6 +498,35 @@ public class PlayerMovement : MonoBehaviour
         }
         return velocity;
     }
+
+    private bool TryGetSteepWallNormal(float slopeLimit, out Vector3 normal)
+    {
+        normal = Vector3.zero;
+        float steepestAngle = slopeLimit;
+
+        if (wallRight)
+        {
+            float angle = Vector3.Angle(rightWallHit.normal, Vector3.up);
+            if (angle > steepestAngle)
+            {
+                steepestAngle = angle;
+                normal = rightWallHit.normal;
+            }
+        }
+
+        if (wallLeft)
+        {
+            float angle = Vector3.Angle(leftWallHit.normal, Vector3.up);
+            if (angle > steepestAngle)
+            {
+                steepestAngle = angle;
+                normal = leftWallHit.normal;
+            }
+        }
+
+        return normal.sqrMagnitude > 0f;
+    }
+
     private bool IsMovingLaterally() // Checks if the player is moving (mostly for state logic)
     {
         Vector3 lateralVelocity = new Vector3(characterController.velocity.x, 0f, characterController.velocity.z);
@@ -490,6 +546,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - characterController.radius, transform.position.z);
 
         bool grounded = Physics.CheckSphere(spherePosition, characterController.radius, groundLayers, QueryTriggerInteraction.Ignore);
+        //bool grounded = Physics.Raycast(spherePosition, Vector3.down, characterController.height / 2f, groundLayers);
 
         return grounded;
     }
@@ -499,6 +556,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 normal = CharacterControllerUtils.GetNormalWithSphereCast(characterController, groundLayers);
         float angle = Vector3.Angle(normal, Vector3.up);
         bool validAngle = angle <= characterController.slopeLimit;
+
+        // CharacterController.isGrounded can be true when touching a very steep wall.
+        // Do not let that contact turn into a grounded state.
+        if (TryGetSteepWallNormal(characterController.slopeLimit, out _))
+            validAngle = false;
 
         return characterController.isGrounded && validAngle;
     }
