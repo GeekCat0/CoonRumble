@@ -27,10 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpLockDelay = 0.1f;
 
     [Header("Dashing Settings")] // Variables for dashing
-    [SerializeField] private float dashForce = 3.0f;
+    [SerializeField] private float dashSpeed = 3.0f;
     [SerializeField] private float dashDuration = 2.0f;
     [SerializeField] private float dashCooldown = 2.0f;
-    [SerializeField] private float maxDashSpeed = 8.0f;
 
     [Header("WallRun Settings")] // Variables for Wall running
     [SerializeField] private float wallCheckDistance = 1.0f;
@@ -86,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     private Vector3 bonusForces = Vector3.zero;
 
+    private bool isDashing = false;
+
     private void Awake() // Set variables that need it and lock the cursor
     {
         playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
@@ -123,6 +124,9 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(0.8f, crouchingHeight, 0.8f);
         else
             transform.localScale = new Vector3(1f, 1f, 1f);
+
+        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
+            Dashing();
     }
     private void LateUpdate()
     {
@@ -146,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
     {
         lastMovementState = playerState.CurrentPlayerMovementState;
 
-        if (playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding)
+        if (playerState.CurrentPlayerMovementState == PlayerMovementState.Grinding || playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
             return;
 
         // Check if there is a wall to the left or right of the player
@@ -217,9 +221,6 @@ public class PlayerMovement : MonoBehaviour
             lateralAcceleration = inAirAcceleration;
         }
 
-        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
-            maxMovementSpeed = maxDashSpeed;
-
         HandleVerticalMovement();
         verticalVelocity -= gravity * Time.deltaTime;
 
@@ -234,10 +235,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerLocomotionInput.DashPressed && dashOffCooldown)
         {
+            isDashing = true;
             velocityHolder = characterController.velocity;
             StartCoroutine(Dash());
-            newVelocity += movementDirection.normalized * dashForce;
-            verticalVelocity = verticalVelocity + playerCamera.transform.forward.y * dashForce * 0.1f;
+            newVelocity += movementDirection.normalized * dashSpeed;
+            verticalVelocity = verticalVelocity + playerCamera.transform.forward.y * dashSpeed * 0.1f;
         }
 
         // Add drag to player
@@ -302,9 +304,6 @@ public class PlayerMovement : MonoBehaviour
     {
         maxMovementSpeed = maxWallRunSpeed;
 
-        if (playerState.CurrentPlayerActionState == PlayerActionState.Dashing)
-            maxMovementSpeed = maxDashSpeed;
-
         HandleVerticalMovement();
 
         if ( verticalVelocity >= 0f )
@@ -355,7 +354,6 @@ public class PlayerMovement : MonoBehaviour
         {
             velocityHolder = characterController.velocity;
             StartCoroutine(Dash());
-            newVelocity = newVelocity + movementDelta * dashForce;
         }
 
         // Add drag to player
@@ -431,13 +429,21 @@ public class PlayerMovement : MonoBehaviour
     {
         dashOffCooldown = false;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
-        maxMovementSpeed = maxDashSpeed;
         yield return new WaitForSeconds(dashDuration);
-        maxMovementSpeed = maxRunSpeed;
         playerState.SetPlayerActionState(PlayerActionState.Idling);
         yield return new WaitForSeconds(dashCooldown);
         dashOffCooldown = true;
     }
+    private void Dashing()
+    {
+        Vector3 inputDir = playerCamera.transform.right * playerLocomotionInput.MovementInput.x + playerCamera.transform.forward * playerLocomotionInput.MovementInput.y;
+
+        if (inputDir.sqrMagnitude < 0.001f)
+            inputDir = playerCamera.transform.forward;
+
+        characterController.Move(inputDir * dashSpeed * Time.deltaTime);
+    }
+
     public void StopDash()
     {
         StopCoroutine(Dash());
