@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1965293152870609421}
   m_Layer: 0
   m_Name: DashAttack
-  m_TagString: Test
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DashAttack
   enemyTag: Enemy
   damage: 100
-  jumpForce: 2.5
+  jumpForce: 3.5
 --- !u!1 &1139615001221687355
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 2786415564749301599}
   - component: {fileID: 6132241359678203922}
   - component: {fileID: 3203527111186912929}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mele
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: weaponText
       value: 
       objectReference: {fileID: 5851564922498819262}
+    - target: {fileID: 5965920805618002469, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.252
+      objectReference: {fileID: 0}
     - target: {fileID: 7251710620919821313, guid: f8b3d52ab426a4643a0d936af4ff00f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -775,10 +779,9 @@ MonoBehaviour:
   inAirAcceleration: 20
   terminalVelocity: 50
   jumpLockDelay: 0.1
-  dashForce: 50
-  dashDuration: 0.3
-  dashCooldown: 0.6
-  maxDashSpeed: 18
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 1
   wallCheckDistance: 0.5
   forwardJumpForce: 0.05
   sideJumpForce: 0.4

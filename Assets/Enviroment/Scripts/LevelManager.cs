@@ -7,9 +7,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform currentCheckpoint;
     [SerializeField] private TextMeshProUGUI pointsCounter;
     private CharacterController characterController;
-    private PlayerControler playerController;
+    private PlayerMovement playerMovement;
 
     [SerializeField] private EnemyAi[] enemies = { };
+    [SerializeField] private bool needEnemies = false;
     private bool allEnemiesDead = true;
     private GameObject blockWall;
     private int freebies = 0;
@@ -22,14 +23,14 @@ public class LevelManager : MonoBehaviour
 
     public void SetCheckpoint(Transform checkpoint)
     {
-        if (allEnemiesDead)
+        if (allEnemiesDead || !needEnemies)
         {
             if (blockWall != null)
                 blockWall.SetActive(false);
             
             currentCheckpoint = checkpoint;
             characterController = FindAnyObjectByType<CharacterController>();
-            playerController = FindAnyObjectByType<PlayerControler>();
+            playerMovement = FindAnyObjectByType<PlayerMovement>();
         }
     }
     public void checkIfAllowed()
@@ -58,9 +59,8 @@ public class LevelManager : MonoBehaviour
         characterController.gameObject.transform.position = currentCheckpoint.position;
         characterController.enabled = true;
         characterController.GetComponent<Health>().ResetHealth();
-        characterController.GetComponent<PlayerControler>().ResetVelocity();
-        playerController.SetPlatform(null);
-        playerController.SetObjectToFollow(null);
+        characterController.GetComponent<PlayerMovement>().ResetVelocity();
+        playerMovement.SetObjectToFollow(null);
         ResetEnemies();
     }
     public void SetEnemies(EnemyAi[] currentEnemies)

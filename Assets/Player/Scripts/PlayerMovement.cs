@@ -81,11 +81,11 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerMovementState lastMovementState = PlayerMovementState.Falling;
 
-
+    Vector3 inputDir = Vector3.zero;
     private bool isGrounded = false;
     private Vector3 bonusForces = Vector3.zero;
-
-    private bool isDashing = false;
+    private PlayerActionState lastActionState = PlayerActionState.Idling;
+    private bool resetVelocity = false;
 
     private void Awake() // Set variables that need it and lock the cursor
     {
@@ -131,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         CameraMovement();
+        lastActionState = playerState.CurrentPlayerActionState;
     }
 
     private void CameraMovement()
@@ -230,18 +231,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movementDirection = cameraRightXZ * playerLocomotionInput.MovementInput.x + cameraForwardXZ * playerLocomotionInput.MovementInput.y;
         Vector3 movementDelta = movementDirection * lateralAcceleration * Time.deltaTime;
 
-
         Vector3 newVelocity = characterController.velocity + movementDelta;
+
+        if (lastActionState == PlayerActionState.Dashing)
+            newVelocity = velocityHolder + movementDelta;
 
         if (playerLocomotionInput.DashPressed && dashOffCooldown)
         {
-            isDashing = true;
             velocityHolder = characterController.velocity;
             StartCoroutine(Dash());
-            newVelocity += movementDirection.normalized * dashSpeed;
-            verticalVelocity = verticalVelocity + playerCamera.transform.forward.y * dashSpeed * 0.1f;
         }
-
         // Add drag to player
         Vector3 currentDrag = newVelocity.normalized * drag * Time.deltaTime;
 
@@ -254,6 +253,14 @@ public class PlayerMovement : MonoBehaviour
         newVelocity.y += verticalVelocity;
         newVelocity += bonusForces;
         newVelocity = !isGrounded ? HandleSteepWalls(newVelocity, characterController.slopeLimit) : newVelocity;
+
+        if (resetVelocity)
+        {
+            resetVelocity = false;
+            newVelocity = Vector3.zero;
+            verticalVelocity = 0f;
+        }
+
         // Moves the character
         characterController.Move(newVelocity * Time.deltaTime);
 
@@ -427,6 +434,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator Dash()
     {
+        inputDir = playerCamera.transform.right * playerLocomotionInput.MovementInput.x + playerCamera.transform.forward * playerLocomotionInput.MovementInput.y;
         dashOffCooldown = false;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
         yield return new WaitForSeconds(dashDuration);
@@ -436,7 +444,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Dashing()
     {
-        Vector3 inputDir = playerCamera.transform.right * playerLocomotionInput.MovementInput.x + playerCamera.transform.forward * playerLocomotionInput.MovementInput.y;
+        //Vector3 inputDir = playerCamera.transform.right * playerLocomotionInput.MovementInput.x + playerCamera.transform.forward * playerLocomotionInput.MovementInput.y;
 
         if (inputDir.sqrMagnitude < 0.001f)
             inputDir = playerCamera.transform.forward;
@@ -577,5 +585,9 @@ public class PlayerMovement : MonoBehaviour
             return velocityHolder;
         }
         return characterController.velocity;
+    }
+    public void ResetVelocity()
+    {
+        resetVelocity = true;
     }
 }
