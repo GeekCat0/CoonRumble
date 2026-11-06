@@ -13,12 +13,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool needEnemies = false;
     private bool allEnemiesDead = true;
     private GameObject blockWall;
-    private int freebies = 0;
+    private int score = 0;
 
     public void Start()
     {
         Application.targetFrameRate = 60;
-        pointsCounter.text = "Trash: " + freebies;
+        pointsCounter.text = "Score: " + score;
     }
 
     public void SetCheckpoint(Transform checkpoint)
@@ -75,9 +75,13 @@ public class LevelManager : MonoBehaviour
         if (allEnemiesDead)
             blockWall = wall;
     }
-    public void addFreebie()
+    public void AddScore(int amount)
     {
-        freebies++;
-        pointsCounter.text = "Trash: " + freebies;
+        score += amount;
+        pointsCounter.text = "Score: " + score;
+    }
+    public int GetScore()
+    {
+        return score;
     }
 }

@@ -16,9 +16,9 @@ public class Freebies : MonoBehaviour
         {
             if (pickableType == 0)
             {
-                levelManager.addFreebie();
+                levelManager.AddScore(100);
                 soundEffect.Play();
-                Destroy(gameObject);
+                Destroy(gameObject); 
             }
             if (pickableType == 1)
             {

@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private bool isPlayer = false;
     [SerializeField] private Animator anim;
+    [SerializeField] private int scoreAmount = 0;
     public bool tookDamage = false;
     private LevelManager levelManager;
 
@@ -25,26 +26,30 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (anim != null && health > 0) anim.Play("EnemyHurt");
-        tookDamage = true;
-        health -= damage;
-
-        if (!isPlayer && canGetKilled && health <= 0)
+        if (health > 0)
         {
-            GetComponent<EnemyAi>().enabled = false;
-            if (anim != null) anim.SetBool("Dead", true);
-            Invoke(nameof(Delay), deathDelay);
-        }
+            if (anim != null && health > 0) anim.Play("EnemyHurt");
+            tookDamage = true;
+            health -= damage;
 
-        if (isPlayer && health <= 0 && canGetKilled)
-        {
-            levelManager.LoadCheckpoint();
-            ResetHealth();
-        }
+            if (!isPlayer && canGetKilled && health <= 0)
+            {
+                levelManager.AddScore(scoreAmount);
+                GetComponent<EnemyAi>().enabled = false;
+                if (anim != null) anim.SetBool("Dead", true);
+                Invoke(nameof(Delay), deathDelay);
+            }
 
-        if (healthText != null)
-        {
-            healthText.text = "Health: " + health.ToString();
+            if (isPlayer && health <= 0 && canGetKilled)
+            {
+                levelManager.LoadCheckpoint();
+                ResetHealth();
+            }
+
+            if (healthText != null)
+            {
+                healthText.text = "Health: " + health.ToString();
+            }
         }
     }
     public void ResetHealth()

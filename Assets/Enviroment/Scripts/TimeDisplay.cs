@@ -10,4 +10,8 @@ public class TimeDisplay : MonoBehaviour
         time += Time.deltaTime;
         text.text = time.ToString("0.00");
     }
+    public float GetTime()
+    {
+        return time;
+    }
 }
