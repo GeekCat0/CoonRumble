@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.43, z: 0.6}
-  m_Center: {x: 0, y: 0, z: 0.23}
+  m_Size: {x: 0.5, y: 0.6206076, z: 0.7282823}
+  m_Center: {x: 0, y: -0.09530379, z: 0.1658589}
 --- !u!114 &1965293152870609421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   runAcceleration: 35
   maxRunSpeed: 6
   drag: 20
-  slideDrag: 5
+  slideDrag: 4
   movingTreshold: 0.01
   maxSpeedBonus: 6
   gravity: 20
@@ -1731,8 +1731,8 @@ MonoBehaviour:
   upJumpForce: 0.5
   wallStartBoost: 2
   maxWallRunSpeed: 7
-  wallRunGravityUp: 0.6
-  wallRunGravityDown: 0.4
+  wallRunGravityUp: 0.5
+  wallRunGravityDown: 0.25
   lookSenseH: 0.1
   lookSenseV: 0.1
   lookLimitV: 89
@@ -1740,7 +1740,7 @@ MonoBehaviour:
   minSpeedForSlide: 0.5
   crouchSpeed: 0.8
   crouchingHeight: 0.3
-  maxSlideSpeed: 12
+  maxSlideSpeed: 11
 --- !u!1001 &6613901436786369052
 PrefabInstance:
   m_ObjectHideFlags: 0

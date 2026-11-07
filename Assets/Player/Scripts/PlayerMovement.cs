@@ -405,7 +405,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            maxMovementSpeed = maxSlideSpeed;
+            maxMovementSpeed = maxSlideSpeed + (speedBonus / 2);
             if (!sliding)
                 newVelocity = newVelocity * slideBoost;
             sliding = true;
@@ -437,7 +437,7 @@ public class PlayerMovement : MonoBehaviour
         inputDir = playerCamera.transform.right * playerLocomotionInput.MovementInput.x + playerCamera.transform.forward * playerLocomotionInput.MovementInput.y;
         dashOffCooldown = false;
         playerState.SetPlayerActionState(PlayerActionState.Dashing);
-        yield return new WaitForSeconds(dashDuration);
+        yield return new WaitForSeconds(dashDuration + (speedBonus * 0.02f));
         playerState.SetPlayerActionState(PlayerActionState.Idling);
         yield return new WaitForSeconds(dashCooldown);
         dashOffCooldown = true;

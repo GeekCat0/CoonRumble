@@ -830,6 +830,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &110370594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 110370593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &112635041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1253,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+--- !u!114 &149008606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8310533023960817226, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+  m_PrefabInstance: {fileID: 149008605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &153582576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1674,7 @@ Transform:
   m_GameObject: {fileID: 176916663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 102.21, y: -1, z: 14.2}
+  m_LocalPosition: {x: 100.17, y: -1, z: 14.2}
   m_LocalScale: {x: 10.847738, y: 4.5776, z: 14.632121}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2919,6 +2941,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &306308297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 306308296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!4 &314304415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7516209060001079455, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
@@ -3331,6 +3364,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &337735514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 337735513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &338836970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,7 +3610,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4325759784079807770, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 86.25
+      value: 84.788
       objectReference: {fileID: 0}
     - target: {fileID: 4325759784079807770, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4882,6 +4926,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &479067868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 479067867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!4 &482310030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4325759784079807770, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
@@ -6453,6 +6508,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &651558972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 651558971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!4 &654239348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7516209060001079455, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
@@ -7744,7 +7810,7 @@ Transform:
   m_GameObject: {fileID: 788544264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 66.09, y: 4.75, z: 16.84}
+  m_LocalPosition: {x: 61.85, y: 4.75, z: 16.84}
   m_LocalScale: {x: 8.328677, y: 4.5776, z: 1.2827302}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8942,7 +9008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7252759856454124327, guid: 17e4c5fbc15b54a499b85e5226415b58, type: 3}
       propertyPath: force
-      value: 150
+      value: 130
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9025,6 +9091,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &901161952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 901161951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &902015066
 GameObject:
   m_ObjectHideFlags: 0
@@ -9945,6 +10022,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &992794510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 992794509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!114 &996563180 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
@@ -10921,6 +11009,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+--- !u!114 &1143258936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8310533023960817226, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+  m_PrefabInstance: {fileID: 1143258935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &1145898009
 GameObject:
   m_ObjectHideFlags: 0
@@ -11094,6 +11193,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+--- !u!114 &1160592975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8310533023960817226, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+  m_PrefabInstance: {fileID: 1160592974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!4 &1160839897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7516209060001079455, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
@@ -11210,8 +11320,8 @@ Transform:
   m_GameObject: {fileID: 1191776327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 71.24, y: 0.89, z: 14.2}
-  m_LocalScale: {x: 10.847738, y: 4.5776, z: 32.878994}
+  m_LocalPosition: {x: 70.35, y: 0.89, z: 14.2}
+  m_LocalScale: {x: 10.847738, y: 4.5776, z: 30.574795}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 924853530}
@@ -11705,6 +11815,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &1220556534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 1220556533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!114 &1229402560 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
@@ -12030,28 +12151,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: enemies.Array.size
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: 'enemies.Array.data[0]'
       value: 
-      objectReference: {fileID: 666220260}
+      objectReference: {fileID: 110370594}
     - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: 'enemies.Array.data[1]'
       value: 
-      objectReference: {fileID: 1623227389}
+      objectReference: {fileID: 1508927954}
     - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: 'enemies.Array.data[2]'
       value: 
-      objectReference: {fileID: 52572563}
+      objectReference: {fileID: 1822994689}
     - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: 'enemies.Array.data[3]'
       value: 
-      objectReference: {fileID: 996563180}
+      objectReference: {fileID: 337735514}
     - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: 'enemies.Array.data[4]'
       value: 
-      objectReference: {fileID: 412724825}
+      objectReference: {fileID: 1505782168}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[5]'
+      value: 
+      objectReference: {fileID: 479067868}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1458899265}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[7]'
+      value: 
+      objectReference: {fileID: 901161952}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1143258936}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[9]'
+      value: 
+      objectReference: {fileID: 1366754593}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[10]'
+      value: 
+      objectReference: {fileID: 1160592975}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[11]'
+      value: 
+      objectReference: {fileID: 149008606}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[12]'
+      value: 
+      objectReference: {fileID: 1349599453}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[13]'
+      value: 
+      objectReference: {fileID: 992794510}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[14]'
+      value: 
+      objectReference: {fileID: 651558972}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[15]'
+      value: 
+      objectReference: {fileID: 1220556534}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[16]'
+      value: 
+      objectReference: {fileID: 1640606590}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[17]'
+      value: 
+      objectReference: {fileID: 306308297}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[18]'
+      value: 
+      objectReference: {fileID: 1820348178}
+    - target: {fileID: 3916011749734865103, guid: 219985f1208cba442aaf30068c50809e, type: 3}
+      propertyPath: 'enemies.Array.data[19]'
+      value: 
+      objectReference: {fileID: 1977846957}
     - target: {fileID: 8123788729580729151, guid: 219985f1208cba442aaf30068c50809e, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.4236
@@ -12633,6 +12814,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &1349599453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 1349599452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1001 &1359776789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12643,7 +12835,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4325759784079807770, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 86.25
+      value: 84.788
       objectReference: {fileID: 0}
     - target: {fileID: 4325759784079807770, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12926,6 +13118,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+--- !u!114 &1366754593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8310533023960817226, guid: 539a65fd1d1d3fc4abaecfcb204767a7, type: 3}
+  m_PrefabInstance: {fileID: 1366754592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &1368242702
 GameObject:
   m_ObjectHideFlags: 0
@@ -13725,6 +13928,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &1458899265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 1458899264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!114 &1486661046 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
@@ -13934,6 +14148,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &1505782168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 1505782167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &1507127569
 GameObject:
   m_ObjectHideFlags: 0
@@ -14122,6 +14347,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &1508927954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 1508927953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!114 &1509390835 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
@@ -14922,6 +15158,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &1640606590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 1640606589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &1645366497
 GameObject:
   m_ObjectHideFlags: 0
@@ -16329,6 +16576,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &1820348178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 1820348177}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1001 &1822994688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16405,6 +16663,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+--- !u!114 &1822994689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1461470146733414443, guid: e12f2fb4209e80d4ea6f1d3aef8a533c, type: 3}
+  m_PrefabInstance: {fileID: 1822994688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &1824013359
 GameObject:
   m_ObjectHideFlags: 0
@@ -16633,7 +16902,7 @@ Transform:
   m_GameObject: {fileID: 1843668586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 76.78, y: 4.75, z: 11.23}
+  m_LocalPosition: {x: 72.54, y: 4.75, z: 11.23}
   m_LocalScale: {x: 4.4755816, y: 4.5776, z: 1.2827302}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17943,6 +18212,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+--- !u!114 &1977846957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586965370965412172, guid: 42e1f636fe4eec74b90964fa12c107d5, type: 3}
+  m_PrefabInstance: {fileID: 1977846956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c4252b4ef907b4c9ce0fd15b5d855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
 --- !u!1 &1977962425
 GameObject:
   m_ObjectHideFlags: 0
