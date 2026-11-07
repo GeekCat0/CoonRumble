@@ -46,6 +46,10 @@ public class LevelManager : MonoBehaviour
     {
         foreach (EnemyAi enemy in enemies)
         {
+            if (enemy.gameObject.activeSelf == false)
+                score -= enemy.GetComponent<Health>().GetScore();
+            pointsCounter.text = "Score: " + score;
+
             enemy.StopAllCoroutines();
             enemy.gameObject.SetActive(true);
             enemy.gameObject.transform.position = enemy.GetSpawnPoint();

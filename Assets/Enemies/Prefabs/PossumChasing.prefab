@@ -33,13 +33,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8423210883909537700}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 5.010025, y: 0.548, z: -10.599998}
   m_LocalScale: {x: 0.13, y: 0.13, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!212 &833976390301504290
 SpriteRenderer:
   serializedVersion: 2
@@ -197,13 +197,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048ae512a0568ec469db0c25b6cd4248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 80
-  health: 40
+  maxHealth: 60
+  health: 60
   canGetKilled: 1
   deathDelay: 0.5
   healthText: {fileID: 0}
   isPlayer: 0
   anim: {fileID: 3952092447322813998}
+  scoreAmount: 250
   tookDamage: 0
 --- !u!54 &8833429449952142654
 Rigidbody:

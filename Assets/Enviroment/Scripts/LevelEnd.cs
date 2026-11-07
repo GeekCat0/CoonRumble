@@ -8,6 +8,7 @@ public class LevelEnd : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endScore;
     [SerializeField] private TextMeshProUGUI endTime;
     [SerializeField] private float expectedTime = 0f;
+    [SerializeField] private int timeMultiplier = 10;
     private LevelManager levelManager;
     private TimeDisplay timeDisplay;
     private int finalScore = 0;
@@ -24,9 +25,9 @@ public class LevelEnd : MonoBehaviour
             Time.timeScale = 0f;
             if (timeDisplay.GetTime() <= expectedTime)
             {
-                finalScore += Mathf.RoundToInt(expectedTime - timeDisplay.GetTime()) * 10;
-                Debug.Log(timeDisplay.GetTime());
+                finalScore += Mathf.RoundToInt(expectedTime - timeDisplay.GetTime()) * timeMultiplier;
             }
+            finalScore += levelManager.GetScore();
             endTime.text = ("Time: " + timeDisplay.GetTime().ToString("0.00"));
             endScore.text = ("Score: " + finalScore);
             Cursor.lockState = CursorLockMode.None;

@@ -386,6 +386,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   isPlayer: 0
   anim: {fileID: 0}
+  scoreAmount: 250
   tookDamage: 0
 --- !u!54 &3900065160276858142
 Rigidbody:

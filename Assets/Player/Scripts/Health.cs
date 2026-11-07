@@ -23,6 +23,10 @@ public class Health : MonoBehaviour
             healthText.text = "Health: " + health.ToString();
         }
     }
+    public int GetScore()
+    {
+        return scoreAmount;
+    }
 
     public void TakeDamage(int damage)
     {
